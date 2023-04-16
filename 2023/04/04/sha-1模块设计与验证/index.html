@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>分类 | ian-blog</title>
+  <title>sha-1模块设计与验证 | ian-blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -516,83 +516,570 @@
     <div id="safearea">
       <main class="main" id="pjax-container" style="margin-top: 0;">
         
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-categories" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
+ <!-- prismjs 代码高亮 -->
+ 
 
-<div class="categories-header" style="background-image:url('https://pic2.zhimg.com/80/v2-7c496c95897fb15768593cc5170c8b1a_1440w.jpg?source=1940ef5c')">
-    <div class="categories-header-title">
-        categories
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+<!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/10.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        sha-1模块设计与验证
+      </span>
     </div>
-    <div class="categories-header-desc">
     
-        <span class="title" id="categories-header-desc"></span>
-    <script>
-  function typedFn() {
-    const el = '#categories-header-desc';
-    const type = 'categories';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
     
-    </div>
-    <div class="mask-box"></div>
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-04-04 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="post-detail-header_category">
+              项目
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
 </div>
 
 
 
-<div id="categories" class="container">
-    <div class="card">
-        <div class="card-content">
-            <div class="category-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="category-chips">
-                
-                
-                <a href="/categories/%E6%80%BB%E7%BA%BF/" title="总线: 1">
-                    <span class="category-content"
-                        title="总线" style="background-color: #FFF;">总线
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux%E5%91%BD%E4%BB%A4/" title="Linux命令: 1">
-                    <span class="category-content"
-                        title="Linux命令" style="background-color: #F5EEF8;">Linux命令
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E9%A1%B9%E7%9B%AE/" title="项目: 1">
-                    <span class="category-content"
-                        title="项目" style="background-color: #85C1E9;">项目
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Verilog/" title="Verilog: 1">
-                    <span class="category-content"
-                        title="Verilog" style="background-color: #82E0AA;">Verilog
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
+<div class="row justify-position">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h2 id="1、sha-1算法"><a href="#1、sha-1算法" class="headerlink" title="1、sha-1算法"></a>1、sha-1算法</h2><p>SHA1是一种密码散列函数，主要适用于数字签名标准里面定义的数字签名算法。对于长度小于2^64位的消息，SHA1会产生一个160位的消息摘要。当接收到消息的时候，这个消息摘要可以用来验证数据的完整性。在传输的过程中，数据很可能会发生变化，那么这时候就会产生不同的消息摘要，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sha1算法流程</span><br><span class="line">对于任意长度的明文，SHA1首先对其进行分组，使得每一组的长度为512位，然后对这些明文分组反复重复处理。对于每个明文分组的摘要生成过程如下：</span><br><span class="line">1、将512位的明文分组划分为16个子明文分组，每个子明文分组为32位。</span><br><span class="line">2、申请 A、B、C、D、E 5个32位的链接变量</span><br><span class="line">3、将16份子明文分组扩展为80份。</span><br><span class="line">4、将80份子明文分组共进行4轮运算。</span><br><span class="line">5、将链接变量与初始链接变量进行求和。</span><br><span class="line">6、将新的链接变量作为下一个明文分组的输入重复进行以上操作。</span><br><span class="line">7、最后，5个链接变量的数据就是SHA1摘要。</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-消息填充"><a href="#1-1-消息填充" class="headerlink" title="1.1 消息填充"></a>1.1 消息填充</h3><p>对于任意长度的明文，首先需要对明文添加位数，使明文总长度为对 512 取模为 448 位。在明文后的第一个添加位是 1 ，其余都是 0 。然后将原始明文的长度以64位表示，附加于前面已添加过位的明文后，此时的明文长度正好是512位的倍数。明文长度从低位开始填充。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原始消息 01100001 01100010 01100011</span><br><span class="line">补1 01100001 01100010 01100011 1</span><br><span class="line">补0 01100001 01100010 01100011 10000000 ... 00000000</span><br><span class="line">补长度 01100001 01100010 01100011 10000000 ... 00000000 00011000</span><br><span class="line">16进制 61626380 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000018</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-分组与扩展"><a href="#1-2-分组与扩展" class="headerlink" title="1.2 分组与扩展"></a>1.2 分组与扩展</h3><p>经过添加位数处理的明文，其长度正好为512位的整数倍，然后按512位的长度进行分组（block），可以划分成L份明文分组，用Y0，Y1，……YL-1表示这些明文分组。对于每个512位的明文分组，将其再分成16份子明文分组（sub-block），每份子明文分组为32位，用<code>M[k](k=0,1,...,15)</code>表示。之后将这16份子明文分组扩充到80份子明文分组，记为<code>W[t](t=0,1,...,79)</code>，扩充的方法如下。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+W_t=&\  M_t,&0<=t<=15\\
+W_t=&\ (W_{t-3}\oplus W_{t-8}\oplus W_{t-14}\oplus W_{t-16})<<<1,&16<=t<=79
+\end{align}</script><h3 id="1-3-摘要运算"><a href="#1-3-摘要运算" class="headerlink" title="1.3 摘要运算"></a>1.3 摘要运算</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x67452301</span><br><span class="line">H1 = 0xEFCDAB89</span><br><span class="line">H2 = 0x98BADCFE</span><br><span class="line">H3 = 0x10325476</span><br><span class="line">H4 = 0xC3D2E1F0</span><br><span class="line">for i = 1:L</span><br><span class="line">fot t = 1:80</span><br><span class="line">	TEMP = (A&lt;&lt;&lt;5) + ft(B,C,D) + E + Wt + Kt</span><br><span class="line">	E = D</span><br><span class="line">	D = C </span><br><span class="line">	C = (B&lt;&lt;&lt;30)</span><br><span class="line">	B = A</span><br><span class="line">	A = TEMP</span><br><span class="line">	if t == 80</span><br><span class="line">		H0 += A</span><br><span class="line">		H1 += B</span><br><span class="line">		H2 += C</span><br><span class="line">		H3 += D</span><br><span class="line">		H4 += E</span><br><span class="line">hash = &#123;H0, H1, H2, H3, H4&#125;</span><br><span class="line">&lt;&lt;&lt;为循环左移</span><br></pre></td></tr></table></figure>
+<p>其中<code>ft</code>为逻辑公式，<code>Kt</code>为常数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_t(B,C,D)=&(B\ \&\ C)\ |\ (\ !B\ \&\ D),&\ 0<<t<=19\\
+f_t(B,C,D)=&(B\ \oplus\ C\ \oplus\ D),&\ 20<<t<=39\\
+f_t(B,C,D)=&(B\ \&\ C)\ |\ (\ B\ \&\ D)|\ (\ C\ \&\ D),&\ 40<<t<=59\\
+f_t(B,C,D)=&(B\ \oplus\ C\ \oplus\ D),&\ 60<<t<=79\\
+\end{align}</script><script type="math/tex; mode=display">
+\begin{align}
+K_t=&5A827999 ,&\ 0<=t<=19\\
+K_t=&6ED9EBA1 ,&\ 20<=t<=39\\
+K_t=&8F1BBCDC ,&\ 40<=t<=59\\
+K_t=&CA62C1D6 ,&\ 60<=t<=79\\、
+\end{align}</script><h2 id="2、硬件设计"><a href="#2、硬件设计" class="headerlink" title="2、硬件设计"></a>2、硬件设计</h2><h3 id="2-1-整体"><a href="#2-1-整体" class="headerlink" title="2.1 整体"></a>2.1 整体</h3><p><img src="https://s2.loli.net/2023/04/04/n6b9AgK5jNBcmMe.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/04/04/n6b9AgK5jNBcmMe.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20230404164751107"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>输入/输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>rst_n</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>data_in[63:0]</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>valid_in</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>hash[159:0]</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>valid_out</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>in_ready</td>
+<td>输出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://s2.loli.net/2023/04/04/PY8q6kRtJOdvWS3.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/04/04/PY8q6kRtJOdvWS3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20230404170052801"></p>
+<h3 id="2-2-消息填充"><a href="#2-2-消息填充" class="headerlink" title="2.2 消息填充"></a>2.2 消息填充</h3><p>消息填充分为以下几种情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原始消息 1000000 length</span><br><span class="line">原始消息 1000000 00000000 ... length</span><br><span class="line">在最后一组消息传入时进行补1，然后根据消息长度补0或者直接补长度</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>输入 / 输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_in[63:0]</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>valid_in</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>out_ready</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>valid_out</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>data_pad[63:0]</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>last_block</td>
+<td>输出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://s2.loli.net/2023/04/04/oElxskAVQ4wDyC1.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/04/04/oElxskAVQ4wDyC1.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20230404171849015"></p>
+<h3 id="2-3-摘要计算"><a href="#2-3-摘要计算" class="headerlink" title="2.3 摘要计算"></a>2.3 摘要计算</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>输入 / 输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_in[63:0]</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>valid_in</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>last_block</td>
+<td>输入</td>
+</tr>
+<tr>
+<td>in_ready</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>pad_in_ready,</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>hash[159:0]</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>valid_out</td>
+<td>输出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://s2.loli.net/2023/04/06/oGM7TiabnCvgDXY.png" class="lazyload placeholder" data-srcset="https://s2.loli.net/2023/04/06/oGM7TiabnCvgDXY.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20230406162318829"></p>
+<h2 id="3、验证"><a href="#3、验证" class="headerlink" title="3、验证"></a>3、验证</h2><p>主要验证不同长度的消息能否正常计算摘要信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">63、64、65、127、128、129、447、448、449、511、512、513、1023、1024、1025、2014、2048、2049、随机</span><br></pre></td></tr></table></figure>
+<h2 id="4、遇到的报错"><a href="#4、遇到的报错" class="headerlink" title="4、遇到的报错"></a>4、遇到的报错</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UVM_FATAL /home/tools/synopsys/vcs/vcs-mx/O-2018.09-SP2/etc/uvm-1.2/base/uvm_phase.svh(1493) @ 9200: reporter [PH_TIMEOUT] Default timeout of 9200 hit, indicating a probable testbench issue</span><br><span class="line">添加 -timescale=1ns/1ps </span><br></pre></td></tr></table></figure>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E9%A1%B9%E7%9B%AE/" class="">
+              项目
+            </a>
+          
         </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>ian</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2023/04/04/sha-1模块设计与验证/" target="_blank" title="sha-1模块设计与验证">https://ian-lab.github.io/2023/04/04/sha-1模块设计与验证/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/8.jpg" class="lazyload placeholder" data-srcset="/medias/8.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
+    <a href="/2023/04/03/Linux%E5%91%BD%E4%BB%A4/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Linux命令</div>
+      </div>
+      <!-- <div class="content">
+        修改指定目录下的所有文件的权限
+1chmod -R 777 apache-tomcat-8.5.20/
+
+      </div> -->
+    </a>
+  </div>
+
 </div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+          open = true;
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+    
+  </script>
+
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>

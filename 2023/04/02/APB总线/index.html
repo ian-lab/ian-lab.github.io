@@ -572,8 +572,9 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>APB(Advanced Peripheral Bus) 作为高级外设总线是AMBA协议之一，也是最基本的总线协议。按照ARM官方定义，APB是一种低成本的接口协议，可以实现低功耗以及精简的接口设计，降低接口设计的复杂度。APB协议不支持流水线设计，它主要应用在低带宽设计需求的接口中，高性能带宽需求可以使用AXI总线。APB协议的实现与时钟沿对齐，以简化外设接口的设计。每次传输至少需要消耗两个时钟周期。</p>
-<p>在SOC设计中，apb一般作为IP的配置接口，包括低速外设如I2C,UART,I2S等，也包括DDR,PCIe,Ethernet等高速IP，可以方便的实现CPU对外设IP的寄存器配置。系统中一般会实现一个AXI2APB或者AHB2APB的转换桥将APB口挂载在系统上。</p>
+        <p>高级外设总线(Advanced Peripheral Bus，APB) 是AMBA协议之一，也是最基本的总线协议。按照ARM官方定义，APB是一种低成本的接口协议，可以实现低功耗以及精简的接口设计，降低接口设计的复杂度。</p>
+<p>APB协议不支持流水线设计，它主要应用在低带宽设计需求的接口中，高性能带宽需求可以使用AXI总线。APB协议的实现与时钟沿对齐，以简化外设接口的设计。每次传输至少需要消耗两个时钟周期。</p>
+<p>在SOC设计中，APB一般作为IP的配置接口，包括低速外设如I2C,UART,I2S等，也包括DDR,PCIe,Ethernet等高速IP，可以方便地实现CPU对外设IP的寄存器配置。系统中一般会实现一个AXI2APB或者AHB2APB的转换桥将APB口挂载在系统上。</p>
 <p><img src="https://pic1.zhimg.com/v2-32198fa14791a2fd2a67a5c793374dc4_r.jpg" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/v2-32198fa14791a2fd2a67a5c793374dc4_r.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
 <h2 id="APB协议的演进"><a href="#APB协议的演进" class="headerlink" title="APB协议的演进"></a>APB协议的演进</h2><p>最早的一版APB协议是在1998发布，目前的APB协议已经达到APB5的版本。</p>
 <p><img src="https://pic4.zhimg.com/v2-31c2b41d0790d2d41e4abcf08ca5681b_r.jpg" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/v2-31c2b41d0790d2d41e4abcf08ca5681b_r.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
@@ -630,6 +631,14 @@
       </div>
       <div class="post-tags-categories">
         
+        <div class="tags">
+          
+            <a href="/tags/%E6%80%BB%E7%BA%BF/" class="">
+              总线
+            </a>
+          
+        </div>
+        
       </div>
       
         <div class="copyright">
@@ -656,6 +665,26 @@
 <div class="post-nav">
 
 
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/8.jpg" class="lazyload placeholder" data-srcset="/medias/8.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/2023/04/03/Linux%E5%91%BD%E4%BB%A4/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">Linux命令</div>
+      </div>
+      
+      <!-- <div class="content">
+        修改指定目录下的所有文件的权限
+1chmod -R 777 apache-tomcat-8.5.20/
+
+      </div> -->
+    </a>
+  </div>
 
 
 
