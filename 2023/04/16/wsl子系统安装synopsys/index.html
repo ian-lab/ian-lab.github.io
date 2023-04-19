@@ -583,6 +583,11 @@
 <p>造成该问题的原因是WSL版本由原来的WSL1升级到WSL2后，内核没有升级，前往 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/wsl2-kernel">微软WSL官网</a> 下载安装适用于 x64 计算机的最新 WSL2 Linux 内核更新包即可。</p>
 <p>3.2 修改子系统网卡地址</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig eth0 down</span><br><span class="line">sudo ifconfig eth0 hw ether 00:15:5D:E1:3D:19 </span><br><span class="line">sudo ifconfig eth0 up</span><br></pre></td></tr></table></figure>
+<p>3.3</p>
+<p>vcs仿真时报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">libvcsnew.so: undefined reference to xxxxxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>添加编译选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-LDFLAGS -Wl,--no-as-needed</span><br></pre></td></tr></table></figure>
 
       </div>
       <div class="post-tags-categories">
