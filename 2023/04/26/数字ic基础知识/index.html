@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>数字ic基础知识 | ian-blog</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  <script src="/js/jquery3.5.1.js"></script>
+  <script src="/js/vue2.6.11.js"></script>
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">加载中...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 头部导航等 -->
+    
+<header class="header " id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/kide.jpg" class="lazyload placeholder" data-srcset="/medias/kide.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">ian-blog</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/friends" class="drawer-menu-item-link">
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/kide.jpg" class="lazyload placeholder" data-srcset="/medias/kide.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">ian-blog</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/about" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/friends" class="menu-item-link" title="友情链接">
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+
+    <!-- 当头部导航设置为背景透明的时候  -->
+    
+      <script src="/js/header/index.js" data-pjax></script>
+    
+</header>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+    <!-- 内容区域 -->
+    <div id="safearea">
+      <main class="main" id="pjax-container" style="margin-top: 0;">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+<!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/13.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        数字ic基础知识
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-04-26 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/%E6%95%B0%E5%AD%97IC/" class="post-detail-header_category">
+              数字IC
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+<div class="row justify-position">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h2 id="数字电路基础知识"><a href="#数字电路基础知识" class="headerlink" title="数字电路基础知识"></a>数字电路基础知识</h2><p><img src="F:\1.重要文件\秋招\基础知识\微信图片_20220813133952.png" class="lazyload placeholder" data-srcset="F:\1.重要文件\秋招\基础知识\微信图片_20220813133952.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信图片_20220813133952"></p>
+<p>状态机</p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/20171119120628558.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/20171119120628558.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="20171119120628558"></p>
+<p>1． 翻译：<strong>读入电路的RTL级描述，并将语言描述翻译成相应的功能块以及功能块之间的拓扑结构</strong>。这一过程的结果是在综合器内部生成电路的布尔函数表达式，不做任何逻辑重组和优化。</p>
+<p>2． 优化：<strong>根据所施加的时序和面积约束</strong>，按照一定的算法对翻译结果进行逻辑重组和优化。</p>
+<p>3． 映射：<strong>根据所施加的时序和面积约束</strong>，从目标工艺库中搜索符合条件的单元来构成实际电路的逻辑网表。</p>
+<p>第一 什么是流水线</p>
+<p>流水线设计就是将组合逻辑系统地分割，并在各个部分（分级）之间插入寄存器，并暂存中间数据的方法。目的是将一个大操作分解成若干的小操作，每一步小操作的时间较小，所以能提高频率，各小操作能并行执行，所以能提高数据吞吐率（提高处理速度）。</p>
+<p>第二 什么时候用流水线设计</p>
+<p>使用流水线一般是时序比较紧张，对电路工作频率较高的时候。典型情况如下：<br>1）功能模块之间的流水线，用乒乓 buffer 来交互数据。代价是增加了 memory 的数量，但是和获得的巨大性能提升相比，可以忽略不计。<br>2） I/O 瓶颈，比如某个运算需要输入 8 个数据，而 memroy 只能同时提供 2 个数据，如果通过适当划分运算步骤，使用流水线反而会减少面积。<br>3）片内 sram 的读操作，因为 sram 的读操作本身就是两极流水线，除非下一步操作依赖读结果，否则使用流水线是自然而然的事情。<br>4）组合逻辑太长，比如(a+b)*c，那么在加法和乘法之间插入寄存器是比较稳妥的做法。</p>
+<p>第三  使用流水线的优缺点</p>
+<p>1）优点： 流水线缩短了在一个时钟周期内给的那个信号必须通过的通路长度，增加了数据吞吐量，从而可以提高时钟频率，但也导致了数据的延时。举例如下：<br>例如：一个 2 级组合逻辑，假定每级延迟相同为 Tpd，</p>
+<p>1.无流水线的总延迟就是 2Tpd，可以在一个时钟周期完成，但是时钟周期受限制在 2Tpd；</p>
+<p>2.流水线：每一级加入寄存器（延迟为 Tco）后，单级的延迟为 Tpd+Tco，每级消耗一个时钟周期，流水线需要 2 个时钟周期来获得第一个计算结果，称 为首次延迟，它要 2*（ Tpd+Tco），但是执行重复操作时，只要一个时钟周期来获得最后的计算结果，称为吞吐延迟（ Tpd+Tco）。可见只要 Tco 小于 Tpd，流水线就可以提高速度。 特别需要说明的是，流水线并不减小单次操作的时间，减小的是整个数据的操作时间，请大家认真体会。</p>
+<p>2） 缺点： 功耗增加，面积增加，硬件复杂度增加，特别对于复杂逻辑如 cpu 的流水线而言，流水越深，发生<br>需要 hold 流水线或 reset 流水线的情况时，时间损失越大。 所以使用流水线并非有利无害，大家需权衡考虑。</p>
+<p> （1）所有综合工具都支持的结构：always，assign，begin，end，case，wire，tri，aupply0，supply1，reg，integer，default，for，function，and，nand，or，nor，xor，xnor，buf，not，bufif0，bufif1，notif0，notif1，if，inout，input，instantitation，module，negedge，posedge，operators，output，parameter。<br>  （2）所有综合工具都不支持的结构：time，defparam，$finish，fork，join，initial，delays，UDP，wait。<br>  （3）有些工具支持有些工具不支持的结构：casex，casez，wand，triand，wor，trior，real，disable，forever，arrays，memories，repeat，task，while。 </p>
+<p>OCV（on-chip variation）是指在同一个芯片上, 由于制造工艺和环境等原因导致芯片上各部分特征不能完全一样，从而造成偏差，对<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=时序分析&amp;spm=1001.2101.3001.7020">时序分析</a>造成影响。这些偏差对互联线和cell的延时都是有影响的。</p>
+<p>在设计中引入OCV的目的在于从设计角度考虑芯片在实际生产中可能出现的各种差异(variation)，从而适度增加设计余量(margin)，减少不必要的设计悲观量(pessimism)。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40293737">https://zhuanlan.zhihu.com/p/40293737</a></p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220309101532865.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220309101532865.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220309101532865"></p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/0836054c60a38ec807e1821be4a1f77d.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/0836054c60a38ec807e1821be4a1f77d.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<h3 id="芯片设计流程"><a href="#芯片设计流程" class="headerlink" title="芯片设计流程"></a>芯片设计流程</h3><p>制定规格-代码编写-仿真验证-逻辑综合-形式验证-sta-dft实现-布局布线-后仿</p>
+<p>vcs verdi-dc-formatlity-pt-icc</p>
+<p>STA 四种时序路径：</p>
+<p>路径1：输入端口到寄存器的数据输入 D，</p>
+<p>路径2：内部寄存器的时钟输入端到下一个寄存器的数据输入 D，</p>
+<p>路径3：内部寄存器的时钟输入端到输出端口；</p>
+<p>路径4：输入端口到输出端口。</p>
+<p>每条时序路径包含 1 个起点和 1 个终点，</p>
+<p>起点只能是设计的基本输入端口或内部寄存器的时钟输入端，</p>
+<p>终点只能是内部寄存器的数据输入端或设计的基本输出端口。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zgezi/article/details/108286253">https://blog.csdn.net/zgezi/article/details/108286253</a></p>
+<h3 id="低功耗设计方法"><a href="#低功耗设计方法" class="headerlink" title="低功耗设计方法"></a>低功耗设计方法</h3><p>动态功耗 静态功耗</p>
+<p>静态功耗</p>
+<p>多阈值工艺（Multi-Vt Design）方法 电源门控（Power Gating）方法 </p>
+<p>动态功耗</p>
+<p>多电压域 门控时钟 毛刺消除 逻辑优化</p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/v2-82b524a0065f050b727096fd4489f1bd_r.jpg" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/v2-82b524a0065f050b727096fd4489f1bd_r.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="v2-82b524a0065f050b727096fd4489f1bd_r"></p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/v2-2be1d2302f84eac9ef054aa955bd8b22_720w.jpg" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/v2-2be1d2302f84eac9ef054aa955bd8b22_720w.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="v2-2be1d2302f84eac9ef054aa955bd8b22_720w"></p>
+<p>verilog延迟</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42369496/article/details/93066397">https://blog.csdn.net/weixin_42369496/article/details/93066397</a></p>
+<h3 id="亚稳态"><a href="#亚稳态" class="headerlink" title="亚稳态"></a>亚稳态</h3><p><strong>建立时间Tsu：</strong>时钟有效沿到来之前数据必须保持稳定的最小时间；</p>
+<p><strong>保持时间Th：</strong>时钟有效沿到来之后数据必须保持稳定的最小时间；</p>
+<p>setup time 和 hold time 的和必须为正</p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/v-set-hold-time-3.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/v-set-hold-time-3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="v-set-hold-time-3"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">https://www.runoob.com/w3cnote/verilog2-setup-hold-time.html</span><br><span class="line">Tcq + Tcomb + Tsu &lt;= Tclk + Tskew （1）</span><br><span class="line">Tcq: 寄存器 clock 端到 Q 端的延迟；</span><br><span class="line">Tcomb： data path 中的组合逻辑延迟；</span><br><span class="line">Tsu: 建立时间；</span><br><span class="line">Tclk: 时钟周期；</span><br><span class="line">Tskew: 时钟偏移。</span><br><span class="line">最小时钟周期 = Tcq + Tcomb + Tsu - Tskew</span><br><span class="line">最快时钟频率 = 1 / (Tcq + Tcomb + Tsu - Tskew)  </span><br><span class="line">Tcq + Tcomb &gt;= Thd + Tskew (2)</span><br><span class="line">Tcq: 寄存器 clock 端到 Q 端的延迟；</span><br><span class="line">Tcomb： data path 中的组合逻辑延迟；</span><br><span class="line">Thd: 保持时间；</span><br><span class="line">Tskew: 时钟偏移。</span><br></pre></td></tr></table></figure>
+<p>建立时间违例</p>
+<p>降低时钟频率  时钟路径插入buffer  优化组合逻辑，采用流水线, 提高工作电压</p>
+<p>保持时间违例</p>
+<p>优化时钟路径，让时钟更早到达 数据通路上插入buffer 更换更大器件延迟的触发器</p>
+<p><strong>恢复时间（Recovery time）：</strong>与同步电路中的建立时间类似，是指异步控制信号（如寄存器的异步清除和置位控制信号）在“下个时钟沿”来临之前变无效的最小时间长度。这个时间的意义是，异步控制信号在时钟上升沿来临Trecovery时间就要保持稳定，如果保证不了这个最小恢复时间，也就是说“下个时钟沿”来临时，这个异步控制信号不能保证正常执行。</p>
+<p><strong>去除时间（Removal time）：</strong>与同步电路中的保持时间类似，是指异步控制信号（如寄存器的异步清除和置位控制信号）在“有效时钟沿”之后变无效的最小时间长度。这个时间的意义是，异步控制信号在时钟上升沿后仍需保持Tremoval的稳定时间，如果保证不了这个去除时间，也就是说这个异步控制信号的解除与“有效时钟沿”离得太近，那么依旧不能保证这一异步控制信号能正常执行。</p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220319202809518.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220319202809518.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220319202809518"></p>
+<p><strong>亚稳态</strong>是指触发器无法在某个规定的时间段内到达一个可以确认的状态。即：如果触发器的输入电压采样时间过短，则触发器需要花很长时间来实现输出逻辑达到标准电平，在这段时间里输出端在高低电平之间处于振荡状态，而不是等于理想输出值。也就是说，电路处于中间态的时间变长，使得电路“反应”迟钝，这就是“亚稳态”。（例如输入信号在时钟有效沿的建立时间和保持时间之间改变了，导致不满足触发器的建立时间或保持时间，导致输出有一段时间的不稳定态，就是亚稳态。）</p>
+<p><strong>产生和消除</strong></p>
+<p>1、跨时钟域信号传输</p>
+<p><strong>产生：</strong>在跨时钟域信号传输时，由于源寄存器时钟和目的寄存器时钟相移未知，所以源寄存器数据发出数据，数据可能在任何时间到达异步时钟域的目的寄存器，所以无法保证满足目的寄存器Tsu和Th的要求，从而出现亚稳态。</p>
+<p><strong>消除：</strong>对异步信号进行同步处理；如添加两级D触发器、采用握手进行交互等。</p>
+<p>2、异步信号采集</p>
+<p><strong>产生：</strong>在异步信号采集中，由于异步信号可以在任意时间点到达目的寄存器，所以也无法保证满足目的寄存器Tsu和Th的要求，从而出现亚稳态。</p>
+<p><strong>消除：</strong>采用FIFO对跨时钟域数据通信进行缓冲设计；</p>
+<p>3、异步复位电路</p>
+<p><strong>产生：</strong>在异步复位电路中，复位信号的释放时间不定，难以保证满足恢复时间（Recovery Time）以及去除时间（Removal Time），从而出现亚稳态。</p>
+<p><strong>消除：</strong> 对复位电路采用异步复位、同步释放方式处理。详见：<a target="_blank" rel="noopener" href="https://blog.csdn.net/CLL_caicai/article/details/104985395">三种复位方式详解—-同步复位/异步复位/异步复位同步释放</a></p>
+<p>避免</p>
+<p>1 降低系统时钟（不常见，因为高速率正确处理才是目的）</p>
+<p>2 用反应更快的触发器（工艺相关，受硬件制约）</p>
+<p>3 引入同步机制，防止亚稳态传播（常见的处理方式，即通过一些机制，在现有硬件条件下，最大程度的减少亚稳态发生）</p>
+<p>4 改善时钟质量，用边沿变化快速的时钟信号</p>
+<h3 id="跨时钟域"><a href="#跨时钟域" class="headerlink" title="跨时钟域"></a>跨时钟域</h3><p>两级触发器同步</p>
+<p>握手</p>
+<p>异步fifo</p>
+<p>dmux</p>
+<h3 id="fifo深度计算"><a href="#fifo深度计算" class="headerlink" title="fifo深度计算"></a>fifo深度计算</h3><script type="math/tex; mode=display">
+fifodepth = burstlen-busrstlen*\frac{rclk}{wclk}\frac{xdata}{yclk}</script><h3 id="异步复位与同步复位"><a href="#异步复位与同步复位" class="headerlink" title="异步复位与同步复位"></a>异步复位与同步复位</h3><p><strong>同步复位：当时钟上升沿检测到复位信号，执行复位操作（有效的时钟沿是前提）。always @ ( posedge clk );</strong></p>
+<p><strong>优点：</strong></p>
+<p>a、有利于<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=仿真器&amp;spm=1001.2101.3001.7020">仿真器</a>的仿真；<br>b、可以使所设计的系统成为 100% 的同步时序电路，有利于<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=时序分析&amp;spm=1001.2101.3001.7020">时序分析</a>，而且可综合出较高的 Fmax；<br>c、由于只在时钟有效电平到来时才有效，所以可以滤除高于时钟频率的复位毛刺。</p>
+<p><strong>缺点：</strong></p>
+<p>a、复位信号的有效时长必须大于时钟周期，才能真正被系统识别并完成复位任务。同时还要考虑诸如 clk skew 、组合逻辑路径延时 、复位延时等因素（所以复位信号有时需要脉冲展宽，用以保证时钟有效期间有足够的复位宽度）；<br>b、由于大多数的逻辑器件的目标库内的 DFF 都只有异步复位端口，所以，倘若采用同步复位的话，综合器就会在寄存器的数据输入端口插入组合逻辑，这样就会一方面额外增加FPGA内部的逻辑资源，另一方面也增加了相应的组合逻辑门时延。</p>
+<p><strong>异步复位：它是指无论时钟沿是否到来，只要复位信号有效，就对系统进行复位。always @ ( posedge clk or negedge rst_n );</strong></p>
+<p><strong>优点：</strong></p>
+<p>a、大多数目标器件库的 DFF 都有异步复位端口，那么该触发器的复位端口就不需要额外的组合逻辑，这样就可以节省资源；<br>b、设计相对简单；<br>c、异步复位信号识别方便（电路在任何情况下都能复位而不管是否有时钟出现）。</p>
+<p><strong>缺点：</strong><br>a、最大的问题在于它属于异步逻辑，问题出现在复位释放时，而不是有效时，如果复位释放接近时钟有效沿，则触发器的输出可能进入亚稳态（此时 clk 检测到的 rst_n 的状态就会是一个亚稳态，即是0是1是不确定的），从而导致复位失败。<br>b、可能因为噪声或者毛刺造成虚假复位信号（注意：时钟端口、清零和置位端口对毛刺信号十分敏感，任何一点毛刺都可能会使系统出错，因此判断逻辑电路中是否存在冒险以及如何避免冒险是设计人员必须要考虑的问题）；<br>c、静态定时分析比较困难。<br>d、对于 DFT (Design For Test可测性设计)设计，如果复位信号不是直接来自于 I/O 引脚，在 DFT 扫描和测试时，复位信号必须被禁止，因此需要额外的同步电路。</p>
+<p><strong>总结：推荐使用异步复位、同步释放的方式，并且复位信号为低电平有效。</strong></p>
+<p>这里：</p>
+<p>一、电路解释：是指复位信号到来的有效与否与 clk 无关，而且复位信号的撤除也与 clk 无关，但是复位信号的撤除是在下一个 clk 来到后才起的作用。</p>
+<p>二、电路目的：为了防止复位信号撤除时，可能产生的亚稳态。</p>
+<p>三、电路详解：异步复位：复位信号 rst_sync_n 由高拉低时实现异步复位。同步释放：这个是关键，即当复位信号 rst_async_n 撤除时（由低拉高），由于双缓冲电路（双寄存器）的作用，rst_sync_n 不会随着 rst_async_n 的撤除而撤除。假设 rst_async_n 撤除时发生在 clk 上升沿，如果不加此电路则可能发生亚稳态事件，但是加上此电路以后，假设第一级 D 触发器 clk 上升沿时 rst_async_n 正好撤除，（第一个DFF 此时是出于亚稳态的；假设此时识别到高电平；若是识别到低电平，则增加一个 Delay）则 DFF1 输出高电平，此时第二级触发器也会更新输出，但是输出值为前一级触发器 clk 来之前时的 Q1 输出状态，显然 Q1 之前为低电平，所以第二级触发器输出保持复位低电平，直到下一个 clk 来之后，才随着变为高电平，即同步释放。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @ (<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_async_n) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (!rst_async_n) <span class="keyword">begin</span>   </span><br><span class="line">        rst_d &lt;= <span class="number">1&#x27;b0</span>;  </span><br><span class="line">        rst_d &lt;= <span class="number">1&#x27;b0</span>;  </span><br><span class="line">    <span class="keyword">end</span>  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span>  </span><br><span class="line">        rst_d &lt;= <span class="number">1&#x27;b1</span>;  </span><br><span class="line">        rst_d &lt;= rst_d;  </span><br><span class="line">    <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">assign</span> rst_o= rst_d;  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/v2-0cb15ea827fa8831172b615832b06e51_r.jpg" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/v2-0cb15ea827fa8831172b615832b06e51_r.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="v2-0cb15ea827fa8831172b615832b06e51_r"></p>
+<h3 id="DFT"><a href="#DFT" class="headerlink" title="DFT"></a>DFT</h3><p><strong>DFT（Design for Test）可测性设计</strong>，为了测试而加入的设计，常见技术 ：</p>
+<p>（1）Scan Chain（扫描链），针对时序电路，测试寄存器（Flip-Flop）和组合逻辑；</p>
+<p>2 内建自测试(BIST)设计技术通过在芯片的设计中加入一些额外的自测试电路，测试时只需要从外部施加必要的控制信号，通过运行内建的自测试硬件和软件，检查被测电路的缺陷或故障。和扫描设计不同的是，内建自测试的测试向量一般是内部生成的，而不是外部输入的。内建自测试可以简化测试步骤，而且无需昂贵的测试仪器和设备(如ATE设备)，但它增加了芯片设计的复杂性。</p>
+<p>（2）MBIST（Memory Bulit-in Self Test，内建自测试），测试芯片中存储资源， rom 和 ram，在设计中插入内建自测试逻辑；</p>
+<p>（3）Boundary Scan（边界扫描），测试封装与 IO、芯片间互联，主要逻辑有 TAP Controller 和 Boundary Scanchain）、JTAG（JTAG 是boundary scan design中用到的一个基本结构）。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">偶数分频</span><br><span class="line">N/<span class="number">2</span>-<span class="number">1</span></span><br><span class="line"><span class="keyword">module</span> clk_div#(</span><br><span class="line"><span class="keyword">parameter</span> div = <span class="number">4</span>;</span><br><span class="line">) (</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rstn,</span><br><span class="line">	<span class="keyword">output</span> clk_out</span><br><span class="line">)</span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>]cnt;</span><br><span class="line">    <span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">            clk_out &lt;= <span class="number">0</span>; </span><br><span class="line">            cnt &lt;= <span class="number">0</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(cnt == div/<span class="number">2</span> - <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">            clk_out &lt;= ~clk_out; </span><br><span class="line">            cnt &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">           clk_out &lt;= clk_out;</span><br><span class="line">            cnt &lt;= cnt+<span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line">奇数分频</span><br><span class="line">(N-<span class="number">1</span>)/<span class="number">2</span> / N-<span class="number">1</span></span><br><span class="line"><span class="keyword">module</span> clk_div#(</span><br><span class="line"><span class="keyword">parameter</span> div = <span class="number">3</span>;</span><br><span class="line">) (</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rstn,</span><br><span class="line">	<span class="keyword">output</span> clk_out</span><br><span class="line">)</span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>]cnt_p;</span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>]cnt_n;</span><br><span class="line">    <span class="keyword">reg</span> clk_p;</span><br><span class="line">    <span class="keyword">reg</span> clk_n;</span><br><span class="line">    <span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">            cnt_p &lt;= <span class="number">0</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(cnt == div - <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">            cnt_p &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            cnt_p &lt;= cnt_p+<span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">            clk_p &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>((cnt == (div-<span class="number">1</span>)/<span class="number">2</span>) || (cnt == div-<span class="number">1</span>)) <span class="keyword">begin</span></span><br><span class="line">            clk_p &lt;= ~clk_p; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">           clk_p &lt;= clk_p;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">     <span class="keyword">always</span> @(<span class="keyword">negedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">            cnt_n &lt;= <span class="number">0</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(cnt == div - <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">            cnt_n &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            cnt_n &lt;= cnt+<span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">always</span> @(<span class="keyword">negedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">            clk_n &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>((cnt == (div-<span class="number">1</span>)/<span class="number">2</span>) || (cnt == div-<span class="number">1</span>)) <span class="keyword">begin</span></span><br><span class="line">            clk_n &lt;= ~clk_n; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">           clk_n &lt;= clk_n;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">assign</span> clk_out = clk_p | clk_n;</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line">小数分频</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> fifo #(</span><br><span class="line"><span class="keyword">parameter</span> width = <span class="number">8</span>,</span><br><span class="line"><span class="keyword">parameter</span> depth = <span class="number">16</span>,</span><br><span class="line"><span class="keyword">parameter</span> log2depth = <span class="number">4</span></span><br><span class="line">)(</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rstn,</span><br><span class="line">	<span class="keyword">input</span> wen,</span><br><span class="line">    <span class="keyword">input</span> ren,</span><br><span class="line">    <span class="keyword">input</span> [width-<span class="number">1</span> : <span class="number">0</span>] wdata,</span><br><span class="line">    <span class="keyword">output</span> [width-<span class="number">1</span> : <span class="number">0</span>] rdata,</span><br><span class="line">    <span class="keyword">output</span> full,</span><br><span class="line">    <span class="keyword">output</span> empty</span><br><span class="line"> )</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">reg</span> [width-<span class="number">1</span>:<span class="number">0</span>] fifo_mem [depth-<span class="number">1</span>:<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">reg</span> [log2depth-<span class="number">1</span>:<span class="number">0</span>] waddr,raddr;</span><br><span class="line">    <span class="keyword">reg</span> [log2depth:<span class="number">0</span>] cnt;</span><br><span class="line">    <span class="keyword">assign</span> full = cnt == depth;</span><br><span class="line">    <span class="keyword">assign</span> empty = cnt == <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">always</span>@(posedeg clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">           cnt &lt;= <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>((wen&amp;&amp;!full) &amp;&amp; (ren&amp;&amp;!empty))<span class="keyword">begin</span></span><br><span class="line">            cnt &lt;= cnt;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(wen&amp;&amp;!full)<span class="keyword">begin</span></span><br><span class="line">            cnt &lt;= cnt+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ren&amp;&amp;!empty)<span class="keyword">begin</span></span><br><span class="line">            cnt &lt;= cnt-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">           cnt &lt;= cnt; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">     <span class="keyword">always</span>@(posedeg clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">           waddr &lt;= <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(wen&amp;&amp;!full)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(waddr == depth - <span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">                 waddr &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                 waddr &lt;= waddr+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            fifo_mem[waddr] &lt;= wdata;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">             waddr &lt;= waddr;</span><br><span class="line">         <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">     <span class="keyword">always</span>@(posedeg clk <span class="keyword">or</span> <span class="keyword">negedge</span> rstn)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rstn)<span class="keyword">begin</span></span><br><span class="line">           raddr &lt;= <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span>(ren&amp;&amp;!empty)<span class="keyword">begin</span></span><br><span class="line">             <span class="keyword">if</span>(raddr == depth - <span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">                 raddr &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                 raddr &lt;= raddr+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">             rdata &lt;= fifo_mem[raddr];</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">             raddr &lt;= raddr;</span><br><span class="line">         <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">module</span> asyn_fifo #(</span><br><span class="line">    	<span class="keyword">parameter</span> width = <span class="number">8</span>,</span><br><span class="line">        <span class="keyword">parameter</span> depth = <span class="number">16</span>,</span><br><span class="line">        <span class="keyword">parameter</span> log2depth = <span class="number">4</span></span><br><span class="line">    )(</span><br><span class="line">    	<span class="keyword">input</span> wclk,</span><br><span class="line">        <span class="keyword">input</span> wrstn,</span><br><span class="line">        <span class="keyword">input</span> rclk,</span><br><span class="line">        <span class="keyword">input</span> rrstn,</span><br><span class="line">        <span class="keyword">input</span> wen,</span><br><span class="line">        <span class="keyword">input</span> ren,</span><br><span class="line">        <span class="keyword">input</span> [width-<span class="number">1</span>:<span class="number">0</span>] wdata,</span><br><span class="line">        <span class="keyword">output</span> <span class="keyword">reg</span> [width-<span class="number">1</span>:<span class="number">0</span>] rdata,</span><br><span class="line">        <span class="keyword">output</span> full,</span><br><span class="line">        <span class="keyword">output</span> empty</span><br><span class="line">    )</span><br><span class="line">        <span class="keyword">reg</span> [width-<span class="number">1</span>:<span class="number">0</span>] fifo_mem [depth-<span class="number">1</span>:<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">reg</span> [log2depth-<span class="number">1</span>:<span class="number">0</span>] waddr, raddr;</span><br><span class="line">        <span class="keyword">reg</span> [log2depth:<span class="number">0</span>] waddr_bin, raddr_bin;</span><br><span class="line">        <span class="keyword">reg</span> [log2depth:<span class="number">0</span>] waddr_gray, raddr_gray;</span><br><span class="line">        <span class="keyword">reg</span> [log2depth:<span class="number">0</span>] wptr, wptr_d1, wptr_d2;</span><br><span class="line">        <span class="keyword">reg</span> [log2depth:<span class="number">0</span>] rptr, rptr_d1, rptr_d2;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">assign</span> waddr = waddr_bin[log2depth-<span class="number">1</span>:<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">always</span> @(<span class="keyword">posedge</span> wclk <span class="keyword">or</span> <span class="keyword">negedge</span> wrstn)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (!wrstn)<span class="keyword">begin</span></span><br><span class="line">               waddr_bin &lt;= <span class="number">0</span>; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (wen&amp;&amp;!full)<span class="keyword">begin</span></span><br><span class="line">                waddr_bin &lt;= waddr_bin + <span class="number">1</span>; </span><br><span class="line">                fifo_mem[waddr] &lt;= wdata;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                waddr_bin &lt;= waddr_bin; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">assign</span> raddr = raddr_bin[log2depth-<span class="number">1</span>:<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">always</span> @(<span class="keyword">posedge</span> rclk <span class="keyword">or</span> <span class="keyword">negedge</span> rrstn)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (!rrstn)<span class="keyword">begin</span></span><br><span class="line">               raddr_bin &lt;= <span class="number">0</span>; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (ren&amp;&amp;!empty)<span class="keyword">begin</span></span><br><span class="line">                raddr_bin &lt;= raddr_bin + <span class="number">1</span>; </span><br><span class="line">                rdata &lt;= fifo_mem[raddr];</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                raddr_bin &lt;= raddr_bin; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">assign</span> waddr_gray = waddr_bin ^ (waddr_bin &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">always</span> @(<span class="keyword">posedge</span> wclk <span class="keyword">or</span> <span class="keyword">negedge</span> wrstn)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(!wrstn)<span class="keyword">begin</span></span><br><span class="line">                wptr &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                wptr &lt;= waddr_gray;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">assign</span> raddr_gray = raddr_bin ^ (raddr_bin &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">always</span> @(<span class="keyword">posedge</span> rclk <span class="keyword">or</span> <span class="keyword">negedge</span> rrstn)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(!rrstn)<span class="keyword">begin</span></span><br><span class="line">                rptr &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                rptr &lt;= raddr_gray;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">always</span> @(<span class="keyword">posedge</span> wclk <span class="keyword">or</span> <span class="keyword">negedge</span> wrstn)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(!wrstn)<span class="keyword">begin</span></span><br><span class="line">                rptr_d1 &lt;= <span class="number">0</span>;</span><br><span class="line">                rptr_d2 &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                rptr_d1 &lt;= rptr;</span><br><span class="line">                rptr_d2 &lt;= rptr_d1;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">always</span> @(<span class="keyword">posedge</span> rclk <span class="keyword">or</span> <span class="keyword">negedge</span> rrstn)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(!rrstn)<span class="keyword">begin</span></span><br><span class="line">                wptr_d1 &lt;= <span class="number">0</span>;</span><br><span class="line">                wptr_d2 &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                wptr_d1 &lt;= wptr;</span><br><span class="line">                wptr_d2 &lt;= wptr_d1;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">assign</span> full = (wptr == &#123;~rptr_d2[log2depth:log2depth-<span class="number">1</span>], rptr_d2[log2depth-<span class="number">2</span>:<span class="number">0</span>]&#125;);</span><br><span class="line">        <span class="keyword">assign</span> empty = (rptr == wptr_d2);</span><br><span class="line">    <span class="keyword">endmodule</span></span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+<h2 id="验证基础知识"><a href="#验证基础知识" class="headerlink" title="验证基础知识"></a>验证基础知识</h2><p>Ic验证能力的五个维度:<br>完备性，复用性，高效性，高产出，代码性能</p>
+<h3 id="定宽数组、动态数组、关联数组、队列各自特点和使用"><a href="#定宽数组、动态数组、关联数组、队列各自特点和使用" class="headerlink" title="定宽数组、动态数组、关联数组、队列各自特点和使用"></a>定宽数组、动态数组、关联数组、队列各自特点和使用</h3><p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312160415186.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312160415186.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220312160415186"></p>
+<p>队列的使用方法：<code>insert，delete,push_back和pop_front</code> <code>Push</code>插入，<code>pop</code>取出<code>Front</code>前边，<code>back</code>后边</p>
+<ul>
+<li>队列:队列结合了链表和数组的优点，可以在一个队列的任何位置进行增加或者删除元素;</li>
+<li>定宽数组:属于静态数组，编译时便已经确定大小。其可以分为压缩定宽数组和非压缩定宽数组:压缩数组是定义在类型后面，名字前面;非压缩数组定义在名字后面。Bit [7:0] [3:0] name; bit[7:0] name [3:0];</li>
+<li>动态数组:其内存空间在运行时才能够确定，使用前需要用new[]进行空间分配。</li>
+<li>关联数组:其主要针对需要超大空间但又不是全部需要所有数据的时候使用，类似于<code>hash</code>，通过一个索引值和一个数据组成,索引值必须是唯一的。</li>
+</ul>
+<p>但是如果要在数组中增加一个元素，需要移动大量元素，在内存中空出一个元素的空间，然后将要增加的元素放在其中。同样的道理，如果想删除一个元素，同样需要移动大量元素去填掉被移动的元素。如果应用需要快速访问数据，很少插入和删除元素，就应该用数组。</p>
+<p>【<strong>一、灵活性</strong>】</p>
+<ul>
+<li>索引是连续的非负整数，采用定宽或动态数组</li>
+<li>索引不规则，且稀疏分布，采用关联数组</li>
+<li>元素数目变化很大数组，采用队列</li>
+</ul>
+<p>【<strong>二、速度</strong>】</p>
+<ul>
+<li>定宽和动态数组都是存放在连续的存储空间中，访问任何的元素时间都相同，与数组大小无关</li>
+<li>队列在收尾存取数据几乎没有任何开销，但是在队列中间插入或删除元素需要对其他元素进行搬移以腾出空间。在很长的队列中间插入新的元素，会需要很长的时间</li>
+<li>关联数组的存取速度是最慢的,因为过程中要有大量算法实现</li>
+</ul>
+<p>【<strong>三、排序</strong>】</p>
+<ul>
+<li>如果<strong>元素一次性全部加入</strong>，选择定宽或者动态数组，只需要对数组进行一次分配</li>
+<li>如果<strong>元素一个一个加入</strong>，选择队列</li>
+<li>如果<strong>数组的值不连续且互异</strong>，可以使用关联数组，把元素值本身作为索引</li>
+</ul>
+<p>【<strong>四、存储空间</strong>】</p>
+<ul>
+<li>小于1000个元素的数组，各种类型对存储器用量影响不大</li>
+<li>1000 ~ 100万个元素的数组，定宽和动态数组具有最高的存储器使用效率</li>
+<li>大于100万个元素的数组，重新检查算法是否有问题</li>
+<li>对兆字节量级的存储器建模应该使用关联数组，但是注意指针带来的额外消耗，关联数组中每个元素站的空间可能会比定宽和动态数组大好几倍</li>
+</ul>
+<h3 id="多线程fork-join-fork-join-any-fork-join-none的用法差异"><a href="#多线程fork-join-fork-join-any-fork-join-none的用法差异" class="headerlink" title="多线程fork join/fork join_any/fork join_none的用法差异"></a>多线程fork join/fork join_any/fork join_none的用法差异</h3><p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/20200518224238367.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/20200518224238367.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="20200518224238367"></p>
+<ul>
+<li><code>Fork join</code>:内部 <code>begin end</code>块并行运行，直到所有线程运行完毕才会进入下一个阶段。</li>
+<li><code>Fork join_any</code>:内部 <code>begin end</code>块并行运行，任意一个<code>begin end</code>块运行结束就可以进入下一个阶段。</li>
+<li><code>Fork join_none</code>:内部 <code>begin end</code>块并行运行，无需等待可以直接进入下一个阶段。</li>
+<li><code>wait fork</code>：会引起调用进程阻塞，直到它的所有子进程结束，一般用来确保所有子进程（调用进程产生的进程，也即一级子进程）执行都已经结束。</li>
+<li><code>disable fork</code>：用来终止调用进程 的所有活跃进程， 以及进程的所有子进程。</li>
+</ul>
+<p>多线程的同步调度方法</p>
+<p>多线程之间同步主要由<code>mailbox、event、 semaphore</code>三种进行一个通信交互。</p>
+<ul>
+<li><code>mailbox邮箱</code>:主要用于两个线程之间的数据通信，通过put函数和 get 函数还有peek函数进行数据的发送和获取。</li>
+<li><code>Event</code>:事件主要用于两个线程之间的一个同步运行，通过事件触发和事件等待进行两个线程间的运行同步。使用@(event)或者 wait(event.trigger)进行等待，-&gt;进行触发。</li>
+<li><code>Semaphore</code>:旗语主要是用于对资源访问的一个交互，通过key的获取和返回实现一个线程对资源的一个访问。使用put和 get函数获取返回key。一次可以多个。</li>
+</ul>
+<h3 id="Task和function的区别"><a href="#Task和function的区别" class="headerlink" title="Task和function的区别"></a>Task和function的区别</h3><ul>
+<li>函数能调用另一个函数，但不能调用任务，任务能调用另一个任务，也能调用另一个函数</li>
+<li>函数总是在仿真时刻0就开始执行，任务可以在非零时刻执行</li>
+<li>函数一定不能包含任何延迟、事件或者时序控制声明语句，任务可以包含延迟、事件或者时序控制声明语句</li>
+<li>函数至少有一个输入变量，可以有多个输入变量，任务可以没有或者多个输入(input)、输出(output)和双向(inout)变量</li>
+<li>函数只能返回一个值，函数不能有输出(output)或者双向(inout)变量，任务不返回任何值，任务可以通过输出(output)或者双向(inout)变量传递多个值</li>
+</ul>
+<p>使用interface和clocking blocking的好处</p>
+<ul>
+<li><code>Interface</code>是一组接口，用于对信号进行一个封装，捆扎起来。如果像<code>verilog</code>中对各个信号进行连接，每一层我们都需要对接口信号进行定义，若信号过多，很容易出现人为错误，而且后期的可重用性不高。因此使用<code>interface</code>接口进行连接，不仅可以简化代码，而且提高可重用性，除此之外，<code>interface</code>内部提供了其他一些功能，用于测试平台与DUT之间的同步和避免竞争。</li>
+<li><code>Clocking block</code>:在<code>interface</code>内部我们可以定义<code>clocking</code>块，可以使得信号保持同步,对于接口的采样vrbg和驱动有详细的设置操作，从而避免<code>TB</code>与 <code>DUT</code>的接口竞争，减少我们由于信号竞争导致的错误。采样提前，驱动落后，保证信号不会出现竞争。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312160649092.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312160649092.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220312160649092"></p>
+<p>OPP(面向对象)的特性？</p>
+<p><strong>封装、继承和多态</strong></p>
+<ul>
+<li>封装:通过将一些数据和使用这些数据的方法<strong>封装在一个集合</strong>里，成为一个类。</li>
+<li>继承:允许通过现有类去得到一个新的类，且其可以共享现有类的属性和方法。<strong>现有类叫做基类</strong>，新<strong>类叫做派生类或扩展类</strong>。</li>
+<li>多态:得到扩展类后，有时我们会使用基类句柄去调用扩展类对象，这时候调用的方法如何准确去判断是想要调用的方法呢?通过对类中方法进行<code>virtual</code>声明，这样当调用基类句柄指向扩展类时，方法会根据对象去识别，调用扩展类的方法，而不是基类中的。而<strong>基类和扩展类中方法有着同样的名字，但能够准确调用，叫做多态。</strong></li>
+<li><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312160824087.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312160824087.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220312160824087"></li>
+</ul>
+<h3 id="简述UVM的工厂机制-Callback机制"><a href="#简述UVM的工厂机制-Callback机制" class="headerlink" title="简述UVM的工厂机制   Callback机制"></a>简述UVM的工厂机制   <code>Callback</code>机制</h3><ul>
+<li><code>Factory</code>机制也叫工厂机制，其存在的意义就是为了能够方便的替换TB中的实例或者已注册的类型。一般而言，在搭建完TB后，我们如果需要对TB进行更改配置或者相关的类信息，我们可以通过使用<code>factory</code>机制进行覆盖，达到替换的效果，从而大大提高TB的可重用性和灵活性。</li>
+<li>Factory的好处是便于创建模块化、可复用的测试平台。同时Factory使得类的重载与复用变得更加简单。</li>
+<li>要使用factory机制先要进行：</li>
+</ul>
+<ol>
+<li>将类注册到factory表中</li>
+<li>创建对象，使用对应的语句 （type_id::create）</li>
+<li>编写相应的类对基类进行覆盖。</li>
+</ol>
+<p>通过工厂进行覆盖有什么要求？</p>
+<ul>
+<li>无论是重载的类（<code>parrot</code>）还是被重载的类（<code>bird</code>），都要在定义时注册到<code>factory</code>机制中。</li>
+<li>被重载的类（<code>bird</code>）在实例化时，要使用<code>factory</code>机制式的实例化方式，而不能使用传统的<code>new</code>方式。</li>
+<li>最重要的是，重载的类（<code>parrot</code>）要与被重载的类（<code>bird</code>）有派生关系。重载的类必须派生自被重载的类，被重载的类必须是重载类的父类。</li>
+</ul>
+<p>Uvm_component_utils有什么作用</p>
+<ul>
+<li><code>factory</code>机制的实现被集成在了一个宏中：<code>uvm_component_utils</code>。</li>
+<li>这个宏最主要的任务是，将字符串登记在<code>UVM</code>内部的一张表中，这张表是<code>factory</code>功能实现的基础。只要在定义一个新的类时使用这个宏，就相当于把这个类注册到了这张表中。这样，<code>factory</code>机制可以实现：根据一个字符串自动创建一个类的实例，并且调用其中的函数（<code>function</code>）和任务（<code>task</code>），这个类的<code>main_phase</code>就会被自动调用。</li>
+</ul>
+<p><code>Callback</code>机制其作用是提高<code>TB</code>的可重用性,其还可进行特殊激励的产生等，与<code>factory</code>类似，两者可以有机结合使用。与<code>factory</code>不同之处在于 <code>callback</code>的类还是原先的类，只是内部的<code>callback</code>函数变了，而<code>factory</code>是产生一个新的扩展类进行替换。</p>
+<ol>
+<li><code>UVM</code>组件中内嵌<code>callback</code>函数或者任务</li>
+<li>定义一个常见的<code>uvm_callbacks class</code></li>
+<li>从<code>UVM callback</code>空壳类扩展<code>uvm_callback</code>类</li>
+<li>在验证环境中创建并登记<code>uvm_callback</code></li>
+</ol>
+<h3 id="field-automation机制和objection机制"><a href="#field-automation机制和objection机制" class="headerlink" title="field_automation机制和objection机制"></a>field_automation机制和objection机制</h3><ul>
+<li><code>field_automation</code>机制：可以自动实现<code>copy、compare、print</code>等三个函数。当使用<code>uvm_field</code>系列相关宏注册之后，可以直接调用以上三个函数，而无需自己定义。这极大的简化了验证平台的搭建，尤其是简化了<code>driver</code>和<code>monitor</code>，提高了效率。</li>
+</ul>
+<ul>
+<li><code>UVM</code>中通过<code>objection</code>机制来控制验证平台的关闭，需要在<code>drop_objection</code>之前先<code>raise_objection</code>。验证在进入到某一<code>phase</code>时，<code>UVM</code>会收集此<code>phase</code>提出的所有<code>objection</code>，并且实时监测所有<code>objection</code>是否已经被撤销了,当发现所有都已经撤销后，那么就会关闭此<code>phase</code>，开始进入下一个<code>phase</code>。当所有的<code>phase</code>都执行完毕后，就会调用<code>$finish</code>来将整个验证平台关掉。如果<code>UVM</code>发现此<code>phase</code>没有提起任何<code>objection</code>，那么将会直接跳转到 下一个<code>phase</code>中。</li>
+</ul>
+<ul>
+<li><code>UVM</code>的设计哲学就是全部由<code>sequence</code>来控制激励生成，因此一般情况下只在<code>sequence</code>中控制<code>objection</code>。另外还需注意的是，<code>raise_objection</code>语句必须在<code>main_phase</code>中第一个消耗仿真时间的语句之前。</li>
+</ul>
+<h3 id="UVM从哪里启动，"><a href="#UVM从哪里启动，" class="headerlink" title="UVM从哪里启动，"></a>UVM从哪里启动，</h3><p>UVM的启动 总结:</p>
+<p>run_test来启动UVM验证平台</p>
+<ul>
+<li>在导入uvm_pkg文件时，会自动创建UVM_root所例化的对象UVM_top，UVM顶层的类会提供run_test()方法充当UVM世界的核心角色，通过UVM_top调用run_test()方法.</li>
+<li>在环境中输入run_test来启动UVM验证平台，run_test语句会创建一个my_case0的实例，得到正确的test_name</li>
+<li>依次执行uvm_test容器中的各个component组件中的phase机制，按照顺序:</li>
+</ul>
+<ol>
+<li>build-phase（自顶向下构建UVM 树）</li>
+<li>connet_phase(自低向上连接各个组件)</li>
+<li>end_of_elaboration_phase</li>
+<li>start_of_simulation_phase</li>
+<li>run_phase() objection机制仿真挂起，通过start启动sequence（每个sequence都有一个body任务。当一个sequence启动后，会自动执行sequence的body任务）,等到sequence发送完毕则关闭objection，结束run_phase()（UVM_objection提供component和sequence共享的计数器，当所有参与到objection机制中的组件都落下objection时，计数器counter才会清零，才满足run_phase()退出的条件）</li>
+<li>执行后面的phase</li>
+</ol>
+<h3 id="接口怎么传递到环境中"><a href="#接口怎么传递到环境中" class="headerlink" title="接口怎么传递到环境中"></a>接口怎么传递到环境中</h3><p>a) 虽然SV可以通过层次化的interface的索引完成传递，但是这种传递方式不利于软件环境的封装和复用。通过使用uvm_config_db配置机制来传递接口，可以将接口的传递与获取彻底分离开。</p>
+<p>b) 接口传递从硬件世界到UVM环境可以通过uvm_config_db来实现，在实现过程中应当注意：</p>
+<p>c) 接口传递应发生在run_test()之前。这保证了在进入build_phase之前，virtual interface已经被传递到uvm_config_db中。</p>
+<p>d) 用户应当把interface与virtual interface区分开来，在传递过程中的类型应当为virtual interface，即实际接口的句柄</p>
+<p>如何在driver中使用interface，为什么</p>
+<ul>
+<li><code>Interface</code>如果不进行<code>virtual</code>声明的话是不能直接使用在<code>dirver</code>中的,会报错，因为<code>interface</code>声明的是一个实际的物理接口。一般在<code>dirver</code>中使用<code>virtual interface</code>进行申明接口，然后通过<code>config_db</code>进行接口参数传递，这样我们可以从上层组件获得虚拟的<code>interface</code>接口进行处理。</li>
+<li><code>Config_db</code>传递时只能传递<code>virtual</code>接口，即<code>interface</code>的句柄，否则传递的是一个实际的物理接口，这在 <code>driver</code>中是不能实现的，且这样的话不同组件中的接口一一对应一个物理接口，那么操作就没有意义了。</li>
+</ul>
+<p>Config_db的作用，以及传递其使用时的参数含义</p>
+<ul>
+<li><code>Config_db</code> 机制主要作用就是传递参数使得<code>TB</code>的可配置性高，更加灵活。<code>Config_db</code>机制主要传递的有三种类型:</li>
+</ul>
+<ol>
+<li>一种是<code>interface</code>虚拟接口，通过传递<code>virtual interface</code>使得<code>dirver</code>和 <code>monitor</code>能够与<code>DUT</code>连接，并驱动接口和采集接口信号。</li>
+<li>第二种是单一变量参数，如<code>int,string,enum</code>等，这些主要就是为了配置某些循环次数，<code>id</code>号是多少等等。</li>
+<li>第三种是<code>object</code>类，这种主要是当配置参数较多时，我们可以将其封装成一个<code>object</code>类，去包含这些属性和相关的处理方法,这样传递起来就比较简单明朗，不易出错。</li>
+</ol>
+<ul>
+<li><code>Config_db</code> 的参数主要由四个参数组成，如下所示，第一个参数为父的根<code>parent</code>，第二个参数为接下来的路径，对应的组件，第三个是传递时的名字（必须保持一致)，第四个是变量名。uvm_config_db #(virtual interface) :: set(uvm_root:.get(),”uvm_test_top.c1”,’vif”,vif); uvm_config_db #(virtual interface) :: get(this,””,”vif”,vif);</li>
+</ul>
+<p>如果环境中有两个config_db set，哪个有效？</p>
+<p><code>UVM</code>更高的层次更接近用户，为了让用户少和底层组件打交道，所以层次越高优先级越高，高层次的<code>set</code>会覆盖底层次的<code>set</code>,如果是层次相同再看时间先后顺序，谁发生的晚谁有效，时间靠后的会覆盖之前的。</p>
+<h3 id="uvm是什么"><a href="#uvm是什么" class="headerlink" title="uvm是什么"></a>uvm是什么</h3><p><code>UVM</code>对一些些重复性和重要的进行封装，在搭建测试平台时可直接调用，从而使帮助验证人员能够快速的搭建一个需要的测试平台，而且还可以提高验证平台的可重用性。但是<code>UVM</code>又不仅仅是封装。</p>
+<ol>
+<li>刚开始接触的时候，我认为<code>UVM</code>其实就是<code>SV</code>的一个封装，将我们在搭建测试平台过程中的一些重复性和重要的工作进行封装,从而使我们能够快速的搭建一个需要的测试平台，并且可重用性还高。因此我当时觉得它就是一个库。</li>
+<li>不过，随着学习的不断深入，当我深入理解<code>UVM</code>中各种机制和模型的构造和相互之间关系之后,我觉得其实<code>UVM</code>方法学对于使用何种语言其实并不重要，重要的是他的思想，比如:在<code>UVM</code>中有<code>sequence</code>机制，以往如果我们使用<code>SV</code>进行<code>TB</code>搭建时，我们一般会采用<code>driver</code>一个类进行数据的产生，转换，发送，或者使用<code>generator</code>和<code>driver</code>两个进行，这种方式可重用性很低，而且代码臃肿;但是在UVM中我们通过将<code>sequence、sequencer、driver、sequence_item</code>拆开，相互独立而又有联系，因此我们只需关注每一个类需要做的工作就可以，可重用性高。我在学习<code>sequence</code>时，我经常把<code>sequence</code> 比作蓄水池，<code>sequence_item</code>就是水，<code>sequencer</code>就是一个调度站，<code>driver</code>就是总工厂，通过这种方式进行处理，我们的总工厂不需要管其他，只需处理运送过来的水资源就可以，而<code>sequencer</code>只需要调度水资源，<code>sequence</code>只需要产生不同的水资源。而这种处理方式和现实世界中的生产模式又是基本吻合的。除此之外，还有好多好多，其实<code>UVM</code>方法学中很多思想就是来源于经验，来源于现实生活，而不在乎是何种语言。</li>
+</ol>
+<p>uvm优缺点</p>
+<ul>
+<li>UVM的优点：UVM有各个机制、促进验证平台的标准化，UVM中<code>test sequence</code>和验证平台是隔离独立的，可以更好的控制激励而不需要重新设计<code>agent</code>. 改变测试<code>sequence</code>可以简单高效提高代码覆盖率。<code>UVM</code>支持工业标准，这会促进验证平台标准化。此外，<code>UVM</code>通过<code>OOP</code>（面向对象编程）的特点（例如继承）以及使用覆盖组件提高了重复使用率。因此UVM环境方便移植，架构清晰，组件连接方便，有利于进行大规模的验证。</li>
+<li>UVM的缺点：代码冗余，工作量大，运行速度有缺失</li>
+</ul>
+<p>UVM验证环境的组成</p>
+<p>首先，<code>UVM</code>测试平台基本是由<code>object</code>和 <code>component</code>组成的，其中 <code>component</code>搭建了<code>TB</code>的一个树形结构，其基本包含了<code>driver、monitor、sequencer、agent、scoreboard、model、env、test、top</code>;然后<code>object</code>一般包含<code>sequence_item、config</code>和一些其他需要的类。各个组件相互独立，又通过<code>TLM</code>事务级传输进行通信，除此之外，<code>DUT</code> 与<code>driver</code>和 <code>monitor</code> 又通过<code>interface</code>进行连接，实现驱动和采集，最后在<code>top</code>层进行例化调用<code>test</code>进行测试。</p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/640" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/640" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<ul>
+<li><p><code>Sequencer</code>:负责将数据转给<code>driver</code></p>
+</li>
+<li><p><code>driver</code>负责数据的发送;<code>driver</code>有时钟/时序的概念。</p>
+</li>
+<li><p>monitor 监测dut的输入输出</p>
+</li>
+<li><p><code>Agent</code>:其实只是简单的把<code>driver</code> ,<code>monitor</code>和<code>sequencer</code>封装在一起。</p>
+</li>
+<li><p>scorboard 对dut的输出与期望输出进行对比</p>
+</li>
+<li><p><code>Env</code>：则相当于是一个特大的容器，将所有成员包含进去。</p>
+</li>
+<li><p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaN8XxkgV5nBib6iccnbN7tUaEc7akOAnibK2AFkRBU19JLcMAP8DLdNpbhg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaN8XxkgV5nBib6iccnbN7tUaEc7akOAnibK2AFkRBU19JLcMAP8DLdNpbhg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+</li>
+<li><p>除了driver、monitor、agent、model、scoreboard、env、test之外全部用uvm_object。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/640.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/640.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="640"></p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312165824897.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220312165824897.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220312165824897"></p>
+<h3 id="代码覆盖率、功能覆盖率和断言覆盖率的区别"><a href="#代码覆盖率、功能覆盖率和断言覆盖率的区别" class="headerlink" title="代码覆盖率、功能覆盖率和断言覆盖率的区别"></a>代码覆盖率、功能覆盖率和断言覆盖率的区别</h3><ul>
+<li>代码覆盖率——是针对RTL设计代码的<strong>运行完备度</strong>的体现，包括<strong>行覆盖率、条件覆盖率、FSM覆盖率、跳转覆盖率、分支覆盖率</strong>，只要仿真就可以收集，可以看DUT的哪部分代码没有动，如果有一部分代码一直没动看一下是不是case没有写到。</li>
+<li>功能覆盖率—-与<code>spec</code>比较来发现，<code>design</code>是否行为正确，需要按<code>verification plan</code>来比较进度。用来衡量哪些设计特征已经被测试程序测试过的一个指标</li>
+</ul>
+<ol>
+<li>首要的选择是使用更多的种子来运行现有的测试程序；</li>
+<li>其次是建立新的约束，只有在确实需要的时候才会求助于定向测试，改进功能覆盖率最简单的方法是仅仅增加仿真时间或者尝试新的随机种子。</li>
+<li>验证的目的就是确保设计在实际环境中的行为正确。设计规范里详细说明了设备应该如何运行，而验证计划里则列出了相应的功能应该如何激励、验证和测量</li>
+</ol>
+<ul>
+<li><p>断言覆盖率:用于检查几个信号之间的关系，常用在查找错误，主要是检查时序上的错误，测量断言被触发的频繁程度。</p>
+</li>
+<li><p>项目中会考虑哪些coverage</p>
+<ul>
+<li>主要会考虑三个方面吧，代码覆盖率，功能覆盖率，断言覆盖率。</li>
+<li>代码覆盖率，主要由行覆盖率、条件覆盖率、<code>fsm</code>覆盖率、跳转覆盖率、分支覆盖率，他们是否都是运行到的，比如 <code>fsm</code>，是否各个状态都运行到了，然后不同状态之间的跳转是否也都运行到了。</li>
+<li>功能覆盖率的话主要是自己编写<code>covergroup</code>和<code>coverpoint</code>去覆盖我们想要覆盖的数据和地址或者其他控制信号。</li>
+<li>断言覆盖率主要检测我们的时序关系是否都运行到了,比如总线的地址数据读写时序关系是否都有实现。</li>
+</ul>
+</li>
+</ul>
+<p>  Coverage一般不会直接达到100%，当你发现condition未cover到的时候，你该怎么做？</p>
+<p>  <code>Condition</code>又称为条件覆盖率，当条件覆盖率未被覆盖时，我们需要通过查看覆盖率报告去定位哪些条件没有被覆盖到,是因为没有满足该条件的前提条件还是因为根本就遗漏了这些情况，根据这个我们去编写相应的<code>case</code>，进而将其覆盖到。</p>
+<p>  Function coverage和 code coverage的区别，以及他们分别对项目的含义</p>
+<ul>
+<li>功能覆盖率主要是针对<code>spec</code>文档中功能点的覆盖检测 -<code>code</code>覆盖率主要是针对<code>RTL</code>设计代码的运行完备度的体现，其包括行覆盖率、条件覆盖率、<code>FSM</code>覆盖率、跳转覆盖率、分支覆盖率（只要仿真就可以，看看<code>DUT</code>的哪些代码没有动，如果有一部分代码一直没动，看一下是不是<code>case</code>没写到）。</li>
+<li>功能覆盖率和代码覆盖率两者缺一不可，功能覆盖率表示着代设计是否具备这些功能,代码覆盖率表示我们的测试是否完备，代码是否冗余。当功能覆盖率高而代码覆盖率低时，表示<code>covergroup</code>是不是写少了，<code>case</code>写少了;或者代码冗余。当功能覆盖率很低而代码覆盖率高时，表示代码设计是不是全面，功能点遗漏;<code>covergroup</code>写的是不是冗余了。只有当两者覆盖率都高的时候才表明我们验证的大部分是可靠的。</li>
+<li>代码覆盖率很难达到100%，一般情况下达到90%多已经非常不错了，如果有一部分代码没有被触动到，需要有经验的验证工程师去分析，如果确实没啥问题，就可以签字通过了</li>
+</ul>
+<p>Find 队列和find index队列</p>
+<p>find的队列应该是返回队列的值，一般的话是和with配合使用，find index应该是返回索引值</p>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/399746842">https://zhuanlan.zhihu.com/p/399746842</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38620826/article/details/116858564">https://blog.csdn.net/qq_38620826/article/details/116858564</a></p>
+<p>并行断言</p>
+<p>时序性的 property 与设计模块一同并行执行</p>
+<p>并发断言基于时钟周期进行，可以放置于procedural block、module、interface及program中。在静态(形式）验证及动态仿真工具中均可以应用。</p>
+<p>立即断言</p>
+<p>非时序的、执行时如过程语句，可以在initial/always过程块或者task/function中使用</p>
+<p>立即断言基于事件，必须放置在程序块中，只能用于动态仿真，没有时间的概念。立即断言与并发断言关键字区分在于“<strong>property</strong>”。简单的立即断言示例如下：</p>
+<p>断言 and 和 和 intersect 区别</p>
+<ol>
+<li><code>And</code> 指的是两个序列具有相同的起始点，终点可以不同。</li>
+<li><code>Intersect</code> 指的是两个序列具有相同的起始点和终点。</li>
+<li><code>Or</code> 指的是两个序列只要满足一个就可以</li>
+<li><code>Throughout</code> 指的是满足前面要求才能执行后面的序列</li>
+</ol>
+<p>你写过assertion嘛，assertion分几种？简述一下assertion的用法</p>
+<ul>
+<li><code>Assertion</code>可以分为立即断言和并发断言。</li>
+<li>立即断言的话就是和时序无关，比如我们在对激励随机化时，我们会使用立即断言，如果随机化出错我们就会触发断言报错。</li>
+<li>并发断言的话主要是用来检测时序关系的，由于在很多模块或者总线中，单纯使用覆盖率或者事务<code>check</code>并不能完全检测多个时序信号之间的关系，但是并发断言却可以使用简洁的语言去监测,除此之外,还可以进行覆盖率检测。</li>
+<li>并发断言的用法的话，主要是有三个层次:</li>
+</ul>
+<ol>
+<li>序列<code>sequence</code>编写，将多个信号的关系用断言中特定的操作符进行表示;</li>
+<li>属性<code>property</code>的编写，它可以将多个<code>sequence</code>和多个<code>property</code>进行嵌套,外加上触发事件;</li>
+<li><code>assert</code>的编写，调用<code>property</code>就可以。编写完断言后我们可以将它用在很多地方，比如<code>DUT</code>内部，或者在<code>top</code>层嵌入<code>DUT</code> 中，还可以在<code>interface</code>处进行编写，基本能够检测到信号的地方都可以进行断言检测。</li>
+</ol>
+<p>a[*3]、a[-&gt;3]和a[=3]区别</p>
+<ul>
+<li>a[*3]指的是:重复3次a，且其与前后其他序列不能有间隔，a中间也不可有间隔。</li>
+<li>a[-&gt;3]指的是:重复3次，其 a中间可以有间隔，但是其后面的序列与a之间不可以有间隔。</li>
+<li>a[=3]指的是:只要重复3次，中间可随意间隔。</li>
+</ul>
+<h3 id="形式验证"><a href="#形式验证" class="headerlink" title="形式验证"></a>形式验证</h3><ul>
+<li>形式验证指从数学上完备地证明或验证电路的实现方案是否确实实现了电路设计所描述的功能。形式验证方法分为<strong>等价性验证、模型检验和定理证明</strong>等。</li>
+<li>形式验证主要验证数字IC设计流程中的各个阶段的代码功能是否一致，包括综合前RTL代码和综合后网表的验证，因为如今IC设计的规模越来越大，如果对门级网表进行动态仿真，会花费较长的时间，而形式验证只用几个小时即可完成一个大型的验证。另外，因为版图后做了时钟树综合，时钟树的插入意味着进入布图工具的原来的网表已经被修改了，所以有必要验证与原来的网表是逻辑等价的</li>
+</ul>
+<h3 id="如何保证验证的完备性"><a href="#如何保证验证的完备性" class="headerlink" title="如何保证验证的完备性?"></a>如何保证验证的完备性?</h3><ul>
+<li>首先不可能百分百完全完备，即遍历所有信号的组合，这既不经济也不现实。</li>
+<li>所以只能通过多种验证方法一起验证尽可能减少潜在风险，一般有这些验证流程：ip级验证、子系统级验证、soc级验证，除这些以外，还有upf验证、fpga原型验证等多种手段。</li>
+<li>前端每走完一个阶段都需要跟设计以及系统一起<code>review</code>验证功能点，测试用例，以及特殊情况下的波形等。</li>
+<li>芯片后端也会做一些检查，像sta、formality、DFM、DRC检查等，也会插入一些DFT逻辑供流片回来测试用。流片归来进行测试，有些bug可以软件规避，有些不能规避，只能重新投片</li>
+</ul>
+<h3 id="启动Sequence的方法"><a href="#启动Sequence的方法" class="headerlink" title="启动Sequence的方法"></a>启动Sequence的方法</h3><ol>
+<li>通过sequence.start的方式显示启动</li>
+<li>通过default sequence来隐式启动</li>
+<li><strong>也可以通过‘uvm_do系列宏启动</strong></li>
+</ol>
+<h3 id="面向对象编程的优势"><a href="#面向对象编程的优势" class="headerlink" title="面向对象编程的优势"></a>面向对象编程的优势</h3><ol>
+<li>易维护:采用面向对象思想设计的结构，可读性高，由于继承的存在，即使改变需求，那么维护也只是在局部模块，所以维护起来是非常方便和较低成本的。</li>
+<li>质量高:在设计时，可重用现有的，在以前的项目的领域中已被测试过的类使系统满足业务需求并具有较高的质量。</li>
+<li>效率高:在软件开发时，根据设计的需要对现实世界的事物进行抽象，产生类。使用这样的方法解决问题，接近于日常生活和自然的思考方式，势必提高软件开发的效率和质量。</li>
+<li>易扩展:由于继承、封装、多态的特性，自然设计出高内聚、低耦合的系统结构，使得系统更灵活、更容易扩展，而且成本较低。</li>
+</ol>
+<p>事件的触发</p>
+<p>用来触发事件时，使用-&gt;；用来等待事件使用@或者wait。</p>
+<h3 id="约束的几种形式"><a href="#约束的几种形式" class="headerlink" title="约束的几种形式"></a>约束的几种形式</h3><ol>
+<li>权重约束 dist：有两种操作符：:=n :/n 第一种表示每一个取值权重都是n,第二种表示每一个取值权重为n/num。</li>
+<li>条件约束 if else 和-&gt;（case）：if else 就是和正常使用一样；-&gt;通过前面条件满足后可以触发后面事件的发生。</li>
+<li>范围约束inside：inside{[min:max]}；范围操作符，也可以直接使用大于小于符号进行，但是不可以连续使用，如 min&lt;wxm&lt;max 这是错误的</li>
+</ol>
+<ul>
+<li>通过<code>constraint_mode（0）</code>关闭默认范围的约束块</li>
+<li><code>constraint_mode(1)</code>是打开约束</li>
+<li>可以用<code>soft</code>关键字修饰特定的约束语句，这样既可以让变量在一般的情况下取默认值，也可以直接给变量赋默认值范围外的取值。</li>
+</ul>
+<h3 id="get-next-item（）和try-next-item（）有什么区别"><a href="#get-next-item（）和try-next-item（）有什么区别" class="headerlink" title="get_next_item（）和try_next_item（）有什么区别"></a>get_next_item（）和try_next_item（）有什么区别</h3><ol>
+<li><code>get_next_item（）</code>是一个阻塞调用，直到存在可供驱动的<code>sequence item</code>为止，并返回指向<code>sequence item</code>的指针。</li>
+<li><code>try_next_item（）</code>是非阻塞调用，如果没有可供驱动的<code>sequence item</code>，则返回空指针。</li>
+</ol>
+<p>Break；continue；return的含义，return之后，function里剩下的语句会执行吗</p>
+<ol>
+<li><code>break</code> 语句结束整个循环。</li>
+<li><code>continue</code> 立即结束本次循环，继续执行下一次循环。</li>
+<li><code>return</code>语句会终止函数的执行并返回函数的值(如果有返回值的话)。</li>
+<li><code>return</code>之后，<code>function</code>里剩下的语句不能执行，其是终止函数的执行，并返回函数的值。</li>
+</ol>
+<h3 id="组件之间的通信机制，analysis-port和其它的区别"><a href="#组件之间的通信机制，analysis-port和其它的区别" class="headerlink" title="组件之间的通信机制，analysis port和其它的区别"></a>组件之间的通信机制，analysis port和其它的区别</h3><ol>
+<li>通信分为，单向通信，双向通信和多向通信</li>
+</ol>
+<ul>
+<li>单向通信：指的是从<code>initiator</code>到<code>target</code>之间的数据流向是单一方向的</li>
+<li>双向通信：双向通信的两端也分为<code>initiator</code>和<code>target</code>，但是数据流向在端对端之间是双向的</li>
+<li>多向通信：仍然是两个组件之间的通信，是指<code>initiator</code>与<code>target</code>之间的相同TLM端口数目超过一个时的处理解决办法。</li>
+</ul>
+<ol>
+<li>blocking阻塞传输的方法包含:</li>
+</ol>
+<ul>
+<li>Put（）：<code>initiator</code>先生成数据<code>Tt</code>，同时将该数据传送至<code>target</code>。</li>
+<li>Get（）:<code>initiator</code>从<code>target</code>获取数据<code>Tt</code>，而<code>target</code>中的该数据<code>Tt</code>则应消耗。</li>
+<li>Peek(): <code>initiator</code>从<code>target</code>获取数据<code>Tt</code>，而<code>target</code>中的该数据<code>Tt</code>还应保留。</li>
+</ul>
+<ol>
+<li>通信管道：</li>
+</ol>
+<ul>
+<li><code>TLM FIFO</code>：可以进行数据缓存，功能类似于<code>mailbox</code>，不同的地方在于<code>uvm_tlm_fifo</code>提供了各种端口<code>（put、get、peek）</code>供用户使用</li>
+<li><code>analysis port</code>：一端对多端，用于多个组件同时对一个数据进行处理，如果这个数据是从同一个源的<code>TLM</code>端口发出到达不同组件，则要求该端口能够满足一端到多端，如果数据源端发生变化需要通知跟它关联的多个组件时，我们可以利用软件的设计模式之一观察者模式实现，即广播模式</li>
+<li><code>analysis TLM FIFO</code></li>
+</ul>
+<p>a. 由于<code>analysis</code>端口提出实现了一端到多端的<code>TLM</code>数据传输，而一个新的数据缓存组件类<code>uvm_tlm_analysis_fifo</code>为用户们提供了可以搭配<code>uvm_analysis_port</code>端口<code>uvm_analysis_imp</code>端口和<code>write()</code>函数。</p>
+<p>b.<code>uvm_tlm_analysis_fifo</code>类继承于<code>uvm_tlm_fifo</code>，这表明它本身具有面向单一<code>TLM</code>端口的数据缓存特性，而同时该类又有一个<code>uvm_analysis_imp</code>端口<code>analysis_export</code>并且实现了<code>write()</code>函数:</p>
+<ul>
+<li>request &amp; response通信管道 双向通信端口<code>transport</code>，即通过在<code>target</code>端实现<code>transport()</code>方法可以在一次传输中既发送<code>request</code>又可以接收<code>response</code>。</li>
+</ul>
+<p>UVM组件的通信方式TLM的接口分类和用法，peek和get的差异</p>
+<ul>
+<li><code>UVM</code>中采用事务级传输机制进行组件间的通信，可以大大提高仿真的速度和使得我们简化组件间的数据传输，简化工作，<code>TLM</code>独立于组件之外，降低组件间的依赖关系。<code>UVM</code> 接口主要由<code>port、export、imp</code>;驱动这些接口方式有<code>put、get、peek、transport、analysis</code> 等。</li>
+<li>其中<code>peek</code>是查看端口内部的数据事务但是不删除，<code>get</code>是获取后立即删除。我们一般会先使用<code>peek</code>进行获取数据，但不删除(保证<code>put</code>端不会立马又发送一个数据)，处理完毕后再用<code>get</code>删除。</li>
+<li>lmp只能作为终点接口，transport表示双向通信，analysis可以连接多个imp(类似于广播)。</li>
+</ul>
+<h3 id="Analysis-port是否可以不连或者连多个impport"><a href="#Analysis-port是否可以不连或者连多个impport" class="headerlink" title="Analysis port是否可以不连或者连多个impport"></a>Analysis port是否可以不连或者连多个impport</h3><p><strong>都可以</strong>。<code>Analysis port</code>类似于广播，其可以同时对多个<code>imp</code>进行事务通信，只需要在每一个对应的<code>imp</code>端口申明<code>write()</code>函数即可。对比 <code>put,get,peek port，</code>他们都只能进行一对一传输，且也必须申明对应的函数如 <code>put()、get()、peek()、can_put()/do_put()</code>等。<code>Fifo</code>是可以不用申明操作函数的，其内部封装了很多的通信端口，如<code>analysis_export</code>等，我们只需要将端口与其连接即可实现通信。</p>
+<p> TLM怎么用</p>
+<ul>
+<li><code>TLM</code>通信的步骤：</li>
+</ul>
+<ol>
+<li>分辨出<code>initiator</code>和<code>target，producer</code>和<code>consumer</code>。</li>
+<li>在<code>target</code>中实现<code>tlm</code>通信方法。</li>
+<li>在俩个对象中创建<code>tlm</code>端口。</li>
+<li>在更高层次中将俩个对象进行连接。</li>
+</ol>
+<ul>
+<li>端口类型有三种：</li>
+</ul>
+<ol>
+<li><code>port</code>，一般是<code>initiator</code>的发起端。</li>
+<li><code>export</code>，作为<code>initiator</code>和<code>target</code>的中间端口。</li>
+<li><code>imp</code>，只能作为<code>target</code>接受<code>request</code>的末端。</li>
+<li>多个<code>port</code>可以连接同一个<code>export</code>或<code>imp</code>，但是单个<code>port</code>或<code>export</code>不能连接多个<code>imp</code>。</li>
+</ol>
+<ul>
+<li>端口的连接：通过<code>connect</code>函数进行连接，例如<code>A(initiator)</code>与<code>B</code>进行连接，可以使用<code>A.port.connect(B.export)</code></li>
+<li>uvm_*_imp#(T,IMP);IMP定义中第一个参数T是这个IMP传输的数据类型，第二个参数IMP是实现这个接口所在的<code>component</code>。</li>
+</ul>
+<p>简述深拷贝和浅拷贝</p>
+<ol>
+<li>浅拷贝可以使用列表自带的<code>copy()</code>函数（如<code>list.copy()</code>），或者使用<code>copy</code>模块的<code>copy()</code>函数。深拷贝只能使用<code>copy</code>模块的<code>deepcopy()</code>,所以使用前要导入：<code>from copy import deepcopy</code></li>
+<li>如果拷贝的对象里的元素只有值，没有引用，那浅拷贝和深拷贝没有差别，都会将原有对象复制一份，产生一个新对象，对新对象里的值进行修改不会影响原有对象，新对象和原对象完全分离开。</li>
+<li>如果拷贝的对象里的元素包含引用（像一个列表里储存着另一个列表，存的就是另一个列表的引用），那浅拷贝和深拷贝是不同的，浅拷贝虽然将原有对象复制一份，但是依然保存的是引用，所以对新对象里的引用里的值进行修改，依然会改变原对象里的列表的值，新对象和原对象完全分离开并没有完全分离开。而深拷贝则不同，它会将原对象里的引用也新创建一个，即新建一个列表，然后放的是新列表的引用，这样就可以将新对象和原对象完全分离开。</li>
+</ol>
+<p>浅拷贝即句柄拷贝，不复制对象，只复制了句柄。只拷贝对象中的数据变量，而对于对象中的数据操作(一般为任务和函数)和其中定义的其他类的句柄，采用类似“引用”的方式，浅拷贝前后共用同一内存空间。</p>
+<p>深拷贝即对象拷贝，对对象中的所有成员变量(包括数据变量、数据操作和其他句柄)统一分配新的内存空间。</p>
+<p>类的public、protected和local的区别</p>
+<ol>
+<li>如果没有指明访问类型，那么成员的默认类型是public，子类和外部均可以访问成员。</li>
+<li>如果指明了访问类型是<code>protected</code>，那么只有该类或者子类可以访问成员，而外部无法访问。</li>
+<li>如果指明了访问类型是<code>local</code>，那么只有该类可以访问成员，子类和外部均无法访问。</li>
+</ol>
+<p>举例说明UVM组件中常用的方法，各种phase关系，phase机制作用</p>
+<ul>
+<li><p><code>UVM</code>中有很多非常有趣的机制，例如<code>factory</code>机制，<code>field_automation</code>机制，<code>phase</code>机制，打印机制，<code>sequence</code>机制，<code>config_db</code>机制等，这些机制使得我们搭建的<code>UVM</code>能够有很好的<strong>可重用性</strong>和使得我们平台运行有秩序稳定。</p>
+</li>
+<li><p>例如<code>phase</code>机制，<code>phase</code>机制主要是使得<code>UVM</code>的运行仿真层次化，使得各种例化先后次序正确。<code>UVM</code>的<code>phase</code>机制主要有9个，外加12个小<code>phase</code>。主要的 <code>phase</code>有<code>build phase、connect phase、run phase、report phase、final phase</code>等，其中除了<code>run phase</code>是<code>** task**</code>，其余都是<code>function</code>，然后<code>build phase</code>和<code>final phase</code>都是自顶向下运行,其余都是自底向上运行。<code>Run phase</code>和12个小<code>phase</code>( <code>reset phase、configure phase、main phase、shutdown phase</code>）是并行运行的，有这12个小<code>phase</code>主要是进一步将<code>run phase</code> 中的事务划分到不同的<code>phase</code>进行，简化代码。注意，<code>run phase</code>和 12个小<code>phase</code>最好不要同时使用。从运行上来看，9个<code>phase</code>顺序执行，不同组件中的同一个<code>phase</code>执行有顺序，<code>build phase</code>为自顶向下，只有同一个<code>phase</code>全部执行完毕才会执行下一个<code>phase</code>。</p>
+</li>
+<li><p>所有的<code>phase</code>按照以下顺序自上而下自动执行：<strong>(九大phase,其中run phase又分为12个小phase)</strong>build_pase</p>
+<p>connect_phase</p>
+<p>end_of_elaboration_phase</p>
+<p>start_of_simulation_phase</p>
+<p><em>run_pase</em></p>
+<p>extract_phase</p>
+<p>check_phase</p>
+<p>report_phase</p>
+<p>final_phase</p>
+<p>其中，<em>run_phase</em>按照以下顺序自上而下执行：</p>
+<p>pre_reset_phase</p>
+<p>reset_phase</p>
+<p>post_reset_phase</p>
+<p>pre_configure_phase</p>
+<p>configure_phase</p>
+<p>post_configure_phase</p>
+<p>pre_main_phase</p>
+<p>main_phase</p>
+<p>post_main_phase</p>
+<p>pre_shutdown_phase</p>
+<p>shutdown_phase</p>
+<p>post_shutdown_phase</p>
+</li>
+</ul>
+<p>  run_phase和main_phase之间的关系;</p>
+<ul>
+<li><p><code>run_phase</code>和<code>main phase</code>（动态运行）都是<code>task phase</code>，且是并行运行的，后者称为动态运行(<code>run-time</code>)的<code>phase</code>。</p>
+</li>
+<li><p>如果想执行一些耗费时间的代码，那么要在此<code>phase</code>下任意一个<code>component</code>中至少提起一次<code>objection</code>，这个结论只适用于12个<code>run-time</code>的<code>phase</code>。对于<code>run_phase</code>则不适用，由于<code>run_phase</code>与动态运行的<code>phase</code>是并行运行的，如果12个动态运行的<code>phase</code>有<code>objection</code>被提起，那么<code>run_phase</code>根本不需要<code>raise_objection</code>就可以自动执行。</p>
+<p>main_phase要如何跳转到reset_phase;</p>
+</li>
+</ul>
+<p>在<code>main_phase</code>执行过程中，突然遇到<code>reset</code>信号被置起，可以用<code>jump()</code>实现从<code>mian_phase</code>到<code>reset_phase</code>的跳转：</p>
+<p>UVM中各个component之间是如何组织运行的，串行还是并行，通过什么机制进行调度的</p>
+<p><code>Component</code> 之间通过在<code>new</code>函数创建时指定<code>parent</code>参数指定子关系，通过这种方法来将<code>TB</code>形成一个树形结构。<code>UVM</code>中运行是通过<code>Phase</code>机制进行层次化仿真的。从组件来看各个组件并行运行，从<code>phase</code>上看是串行运行，有层次化的。<code>Phase</code>机制的9个<code>phase</code>是串行运行的，不同组件中的同一个<code>phase</code>都运行完毕后才能进入下一个<code>phase</code>运行，同一个<code>phase</code>在不同组件中的运行也是由一定顺序的,<code>build</code> 和 <code>final</code>是自顶向下。</p>
+<p> phase中的domain概念</p>
+<p><code>Domain</code>是用来组织不同组件，实现独立运行的概率。默认情况下，<code>UVM</code>的9个<code>phase</code>属于 <code>common_domain</code>，12个小<code>phase</code>属于<code>uvm_domain</code>。例如，如果我们有两个<code>dirver</code>类，默认情况下，两个<code>driver</code>类中的复位<code>phase</code>和 <code>main phase</code>必须同时执行,但是我们可以设置两个<code>driver</code>属于不同的<code>domain</code>,这样两个<code>dirver</code>就是独立运行的了，相当于处于不同的时钟域(只针对12个小<code>phase</code>有效)。</p>
+<p>Sequence和item（uvm_sequece，uvm_sequence_item）以及sequence的分类</p>
+<ol>
+<li><code>item</code>是基于<code>uvm_object</code>类，这表明了它具备<code>UVM</code>核心基类所必要的数据操作方法，例如<code>copy、 clone、compare、record</code>等。</li>
+<li><code>item</code>对象的生命应该开始于<code>sequence</code>的<code>body（）</code>方法，而后经历了随机化并穿越<code>sequencer</code>最终到达<code>driver</code>，直到被<code>driver</code>消化之后，它的生命一般来讲才会结束。</li>
+<li>item与sequence的关系 一个<code>sequence</code>可以包含一些有序组织起来的<code>item</code>实例，考虑到<code>item</code>在创建后需要被随机化，<code>sequence</code>在声明时也需要预留一些可供外部随机化的变量，这些随机变量一部分是用来通过层级传递约束来最终控制<code>item</code>对象的随机变量，一部分是用来对<code>item</code>对象之间加以组织和时序控制的。</li>
+<li>Sequence的分类:</li>
+</ol>
+<ul>
+<li>扁平类<code>（flat sequence)</code>：这一类往往只用来组织更细小的粒度，即item实例构成的组织。</li>
+<li>层次类<code>( hierarchical sequence)</code>：这一类是由更高层的sequence用来组织底层的<code>sequence</code>,进而让这些<code>sequence</code>或者按照顺序方式，或者按照并行方式，挂载到同一个<code>sequencer</code>上。</li>
+<li>虚拟类<code>（virtual sequence)</code>：这一类则是最终控制整个测试场景的方式，鉴于整个环境中往往存在不同种类的<code>sequencer</code>和其对应的<code>sequence</code>，我们需要一个虚拟的<code>sequence</code>来协调顶层的测试场景。之所以称这个方式为<code>virtual sequence</code>，是因为该序列本身并不会固定挂载于某一种<code>sequencer</code>类型上，而是将其内部不同类型<code>sequence</code>最终挂载到不同的目标<code>sequencer</code>上面。这也是<code>virtual sequence</code>不同于<code>hierarchical sequence</code>的最大一点。</li>
+</ul>
+<p>Sequence和sequencer的关系</p>
+<ul>
+<li><code>sequence</code>机制用于产生激励，它是<code>UVM</code>中最重要的机制之一。<code>sequence</code>机制有两大组成部分：<code>sequence</code>和<code>sequencer</code>。</li>
+<li>在整个验证平台中<code>sequence</code>处于一个比较特殊的位置。<code>sequence</code>不属于验证平台的任何一部分，但是它与<code>sequencer</code>之间有着密切的关系。</li>
+<li>只有在<code>sequencer</code>的帮助下，<code>sequence</code>产生的<code>transaction</code>才能最终送给<code>driver</code>；同样，<code>sequencer</code>只有在<code>sequence</code>出现的情况下才能体现出其价值，如果没有<code>sequence</code>，<code>sequencer</code>几乎没有任何作用。</li>
+<li>除此之外，<code>sequence</code>与<code>sequencer</code>还有显著的区别。从本质上说，<code>sequencer</code>是一个<code>uvm_component</code>,而<code>sequence</code>是一个<code>uvm_object</code>。与<code>my_transaction</code>一样，<code>sequence</code>也有其生命周期。它的生命周期比<code>my_transaction</code>要更长一点，其内部的<code>transaction</code>全部发送完毕后，它的生命周期也就结束了。</li>
+</ul>
+<p> Sequencer的仲裁特性（set_arbitration）及锁定机制（lock和grab）</p>
+<ol>
+<li><code>仲裁特性</code><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNrqVbpQbx1xaTqeeF75Xcwd1UicrViaoFiaPIicticfeicFavII8DCpAYJmJw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNrqVbpQbx1xaTqeeF75Xcwd1UicrViaoFiaPIicticfeicFavII8DCpAYJmJw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></li>
+<li><code>锁定机制</code></li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNQWwygzQUVEI4AwwnaKq1OEZO7jRqTGEOhVGjR9ou2OfQ8uiaCWsTPicA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNQWwygzQUVEI4AwwnaKq1OEZO7jRqTGEOhVGjR9ou2OfQ8uiaCWsTPicA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<p> Virtual sequence和virtual sequencer中virtual含义</p>
+<p><code>Virtual</code>含义就是其<code>sequencer</code> 并不需要传递<code>item</code>，也不会与<code>driver</code>连接，其只是一个去协调各个<code>sequencer</code>的中央路由器。通过<code>virtual sequencer</code>我们可以实现多个<code>agent</code>的多个<code>sequencer</code>他们的 <code>sequence</code>的调度和可重用。<code>Virtual sequence</code>可以组织不同<code>sequencer</code> 的<code>sequence</code>群落。</p>
+<p>为什么会有sequence、sequencer以及driver，为什么要分开实现，这样做的好处是什么？</p>
+<ul>
+<li>在<code>UVM</code>中有<code>sequence</code>机制，以往如果我们使用<code>SV</code>进行<code>TB</code>搭建时，我们一般会采用<code>driver</code> 一个类进行数据的参数,转换,发送,或者使用<code>genetor</code>和<code>driver</code>两个进行，这种方式可重用性很低，而且代码臃肿;</li>
+<li>但是在UVM中我们通过将<code>sequence、sequencer、driver、sequence_item</code>拆开，相互独立而又有联系，因此我们只需关注每一个类需要做的工作就可以，可重用性高。我在学习<code>sequence</code>时，我经常把<code>sequence</code> 比作蓄水池，<code>sequence_item</code>就是水，<code>sequencer</code>就是一个调度站，<code>driver</code>就是总工厂，通过这种方式进行处理，我们的总工厂不需要管其他，只需处理运送过来的水资源就可以，而<code>sequencer</code>只需要调度水资源，<code>sequence</code>只需要产生不同的水资源。</li>
+</ul>
+<p>UVM如何启动一个sequence</p>
+<ul>
+<li>启动<code>sequence</code>有很多的方法:常用的方法有使用<code>default sequence</code>进行调用，其会将对应的<code>sequence</code> 与 <code>sequencer</code>绑定，当<code>dirver</code>请求获得<code>req</code>时，<code>sequencer</code>就会调用对应的<code>sequence</code>去运行<code>body</code>函数，从而产生<code>req</code>。</li>
+<li>除此之外，还可以使用<code>start</code>函数进行，其参数主要就是对应的需要绑定的<code>sequencer</code>和该类的上层<code>sequence</code>。如此，就可以实现启动<code>sequence</code>的功能。</li>
+<li>注意:一般仿真开始结束会在<code>sequence</code> 中 <code>raise objection</code>和 <code>drop objection</code></li>
+</ul>
+<p>你所搭建的验证平台为什么要用RAL（寄存器）</p>
+<ul>
+<li>首先，我们要了解寄存器对于设计的重要性，其是模块间交互的窗口，我们可以通过读寄存器值去观察模块的运行状态,通过写寄存器去控制模块的配置和功能改变。</li>
+<li>然后，为什么我们需要RAL呢?由于前面寄存器的重要性，我们可以知道，如果我们不能先保证我们寄存器的读写正确，那么就不用谈后续 DUT是否正确了，因此，寄存器的验证是排在首要位置的。</li>
+<li>那么我们应该用什么方法去读写和验证寄存器呢?采用RAL寄存器模型去测试验证，是目前最成功的方法吧，寄存器模型独立于<code>TB</code>之外，我们可以搭建一个测试寄存器的<code>agent</code>，去通过前门或者后门访问去控制<code>DUT</code>的寄存器,使得 <code>DUT</code>按照我们的要求去运行。</li>
+<li>除此之外，<code>UVM</code>中内建了很多<code>RAL</code>的<code>sequence</code>，用于帮助我们去检测寄存器，除此之外，还有一些其他的类和变量去帮助我们搭建，以提高<code>RAL</code>的可重用性和便捷性还有更全的覆盖率。</li>
+</ul>
+<p>前门访问和后门访问的区别</p>
+<ul>
+<li>前门访问和后门访问的比较</li>
+</ul>
+<ol>
+<li>前门访问，顾名思义指的是在寄存器模型上做的读写操作，最终会通过总线UVC来实现总线上的物理时序访问，因此是真实的物理操作。</li>
+<li>后门访问，指的是利用<code>UVM DPI (uvm_hdl_read()、uvm_hdl_deposit())</code>,将寄存器的操作直接作用到DUT内的寄存器变量，而不通过物理总线访问。</li>
+<li>前门访问在使用时需要将<code>path</code>设置为<code>UVM_FRONTDOOR</code></li>
+<li>在进行后门访问时，用户首先需要确保寄存器模型在建立时，是否将各个寄存器映射到了<code>DUT</code>一侧的<code>HDL</code>路径：使用<code>add_hdl_path</code></li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNyCZuUibe6SqzPvIM8XuB0DcJOLtUBdvLazlibySp0w8MYvfU8fTA1OxQ/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNyCZuUibe6SqzPvIM8XuB0DcJOLtUBdvLazlibySp0w8MYvfU8fTA1OxQ/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<ol>
+<li>从上面的差别可以看出，后门访问较前门访问更便捷更快一些，但如果单纯依赖后门访问也不能称之为“正道”。</li>
+<li><p>实际上，利用寄存器模型的前门访问和后门访问混合方式，对寄存器验证的完备性更有帮助。</p>
+<p>后门访问的路径怎么配置</p>
+</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNrPQS9VRib4CWUObmJnsSsDr6nhWXypM6kCSZicTLNUnmQGicxiaMoPIwWA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNrPQS9VRib4CWUObmJnsSsDr6nhWXypM6kCSZicTLNUnmQGicxiaMoPIwWA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<p> 如果寄存器的地址不匹配的错误怎么测试出来</p>
+<p>在通过前门配置寄存器A之后，再通过后门访问来判断HDL地址映射的寄存器A变量值是否改变，最后通过前门访问来读取寄存器A的值。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNiaX5kibgGXb1PciatZ0JXLJAMH6OWQr5njNRyfvbVFImej5icpN7XyvE5A/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNiaX5kibgGXb1PciatZ0JXLJAMH6OWQr5njNRyfvbVFImej5icpN7XyvE5A/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<p>寄存器模型的常规方法（期望值、镜像值、真实值）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mirror、desired、actual value（）</span><br></pre></td></tr></table></figure>
+<ol>
+<li>我们在应用寄存器模型的时候，除了利用它的寄存器信息，也会利用它来跟踪寄存器的值。寄存器有<strong>很多域</strong>，<strong>每一个域都有两个值</strong>。</li>
+<li>寄存器模型中的每一个寄存器，都应该有<strong>两个值</strong>，一个是<strong>镜像值</strong>( <code>mirrored value</code>) , 一个是<strong>期望值</strong>(<code>desired value</code>） 。</li>
+<li>期望值是先利用寄存器模型修改软件对象值，而后利用该值更新硬件值;镜像值是表示当前硬件的已知状态值。</li>
+<li>镜像值往往由模型预测给出，即在前门访问时通过观察总线或者在后门访问时通过自动预测等方式来给出镜像值</li>
+<li>镜像值有可能与硬件实际值不一致</li>
+</ol>
+<p>Prediction的分类（自动预测和显式预测）</p>
+<ul>
+<li>UVM提供了两种用来跟踪寄存器值的方式，我们将其分为自动预测（<code>auto prediction</code>）和显式预测( <code>explicit</code>)。</li>
+<li>如果用户想使用自动预测的方式，还需要调用函数<code>uvm_reg_map::set_auto predict()</code></li>
+<li>两种预测方式的显著差别在于，<strong>显式预测对寄存器数值预测更为准确</strong>，我们可以通过下面对两种模式的分析得出具体原因。<strong>自动预测</strong></li>
+</ul>
+<ol>
+<li>如果用户没有在环境中集成独立的<code>predictor</code>，而是利用寄存器的操作来自动记录每一次寄存器的读写数值，并在后台自动调用<code>predict()</code>方法的话，这种方式被称之为自动预测。</li>
+<li>这种方式简单有效，然而需要注意,如果出现了其它一些<code>sequence</code>直接在总线层面上对寄存器进行操作（跳过寄存器级别的<code>write/read</code>操作,或者通过其它总线来访问寄存器等这些额外的情况，都无法自动得到寄存器的镜像值和预期值。<strong>显式预测</strong></li>
+<li>更为可靠的一种方式是在物理总线上通过监视器来捕捉总线事务，并将捕捉到的事务传递给外部例化的<code>predictor</code>，该<code>predictor</code>由<code>UVM</code>参数化类<code>uvm_reg_predictor</code>例化并集成在顶层环境中。</li>
+<li>在集成的过程中需要将<code>adapter</code>与<code>map</code>的句柄也一并传递给<code>predictor</code>,同时将<code>monitor</code>采集的事务通过<code>analysis port</code>接入到<code>predictor</code>一侧。</li>
+<li>这种集成关系可以使得，<code>monitor</code>一旦捕捉到有效事务，会发送给<code>predictor</code>，再由其利用<code>adapter</code>的桥接方法，实现事务信息转换，并将转化后的寄存器模型有关信息更新到<code>map</code>中。</li>
+<li><p>默认情况下，系统将采用显式预测的方式，这就要求集成到环境中的总线<code>UVC monitor</code>需要具备捕捉事务的功能和对应的<code>analysis port</code>，以便于同<code>predictor</code>连接。</p>
+<p>寄存器怎么配置，adapter怎么集成</p>
+</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNgfA5c49te06ChJJwWsibh2cG2kMocOJS9xo60XURUnI3cYXbFiblnf7g/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNgfA5c49te06ChJJwWsibh2cG2kMocOJS9xo60XURUnI3cYXbFiblnf7g/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<p>你在做验证时的流程是怎么样的，你是怎么做的。</p>
+<p>对于流程的话</p>
+<ol>
+<li>首先第一步我会先去查看<code>spec</code>文档，将模块的功能和接口总线时序搞明白，尤其是工作的时序，这对于后续写<code>TB</code>非常重要;</li>
+<li>第二步我会根据功能点去划分我的<code>TB</code>应该怎么搭建，我的<code>case</code>大致会有哪些，这些功能点我应该如何去覆盖，时序应该如何去检查，总结列出这样的一个清单;</li>
+<li>第三步开始去搭建我们的<code>TB</code>，包括各种组件，和一些基础的 <code>sequence</code>还有<code>test</code>，暂时先就写一两个基础的<code>sequence</code>,然后还有一些环境配置参数的确定等,最后能够将<code>TB</code>正常运行，保证无误;</li>
+<li>第四步就是根据清单去编写<code>sequence</code>和 <code>case</code>，然后去仿真，保证仿真正确性，收集覆盖率;</li>
+<li>第五步就是分析收集的覆盖率，然后查看覆盖率报告去分析还有哪些没有被覆盖，去写一些定向<code>case</code>，和更换不同的<code>seed</code>去仿真;</li>
+<li>第六步就是回归测试<code>regression</code>，通过不同的 <code>seed</code>去跑，收集覆盖率和检测是否有其它<code>bug</code>;</li>
+<li>第七步就是总结</li>
+</ol>
+<p>验证流程，验证环境怎么搭</p>
+<ul>
+<li>验证流程：</li>
+</ul>
+<ol>
+<li>看<code>spec</code>文档和协议，将<code>DUT</code>的功能和接口总线时序搞明白</li>
+<li>制定验证计划和测试点分解</li>
+<li>写<code>VIP</code>或者是用别人给的<code>VIP</code>，搭建验证环境和<code>TB</code>，包括各种组件，各个模块的<code>pkg</code>,基础的 <code>sequence</code>还有<code>test</code>，暂时先就写一两个基础的 <code>sequence</code>,然后还有一些环境配置参数的确定等,最后能够将<code>TB</code>正常运行，保证无误;</li>
+<li>根据测试点编写<code>sequence</code>和 <code>case</code>，然后去仿真，保证仿真正确性，收集覆盖率;</li>
+<li>分析收集的覆盖率，然后查看覆盖率报告去分析还有哪些没有被覆盖，去写一些定向<code>case</code>，和更换不同的<code>seed</code>去仿真;</li>
+<li>回归测试<code>regression</code>，通过不同的<code>seed</code>去跑，收集覆盖率和检测是否有其它<code>bug</code>;</li>
+<li>总结</li>
+</ol>
+<ul>
+<li>验证环境的搭建：</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNSezpD1gQiaT5oRicxt0y0MmRcFvYfKZeuFQ7MYpsu1iaTyB3xqN32Lupw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="lazyload placeholder" data-srcset="https://mmbiz.qpic.cn/mmbiz_png/UbKOiaB8TbMlZhJ8A0nIC77xic0qpzicyiaNSezpD1gQiaT5oRicxt0y0MmRcFvYfKZeuFQ7MYpsu1iaTyB3xqN32Lupw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="图片"></p>
+<p><code>driver</code>给 <code>DUT</code> 发送激励，<code>montior</code>监测 <code>DUT</code> 输出的数据，参考模型（ <code>reference model</code> ）能实现与 <code>DUT</code>相同的功能，<code>scoreboard</code>把 <code>monitor</code>接受到的数据和 <code>reference model</code>的输出数据进行比对，如果比对成功就表示 <code>DUT</code> 能完成设计的功能，</p>
+<p>你的验证环境是什么？目录结构是什么样的</p>
+<p>我是使用<code>UVM</code>验证方法学搭建的<code>TB</code>，然后在<code>VCS</code>平台进行仿真的。目录结构的话:主要由<code>RTL</code>文件、<code>doc</code>文件、<code>tb</code>文件、<code>sim</code>文件、<code>script</code>文件这几部分。</p>
+<p>你在进行验证的过程中，碰到过什么难点，重点是什么呢?</p>
+<ul>
+<li>刚开始的难点还是TB的搭建，想要搭建出一个可重用性很高的TB，配置灵活的TB还是有一定困难，对于哪些参数应该放在配置类，哪些参数应该放在事务类的抉择，哪些单独配置。</li>
+<li>除此之外，还有就是时序的理解，这对于<code>driver</code>和<code>monitor</code>还有<code>sequence</code>和 <code>assertion</code>的编写至关重要，只有正确理解时序才能编写出正确的<code>TB</code>。</li>
+<li>最后就是实现覆盖率的尽可能高，这也是比较困难的，刚开始的<code>case</code>好写，也比较快就可以达到较高的覆盖率，但是那些边边角角的<code>case</code>需要自己去琢磨，去分析还需要写什么<code>case</code>。这些难点就是重点，还要能够自动化监测判断是否正确。</li>
+</ul>
+<p>你发现过哪些验证过程中的 bug，如何发现的，怎么解决的?</p>
+<p>这个问题面试的时候经常问，建议面试之前考虑一下，再做决定</p>
+<p>IP怎么写？</p>
+<ul>
+<li>阶段1（定义)。</li>
+</ul>
+<ol>
+<li>功能特性提取</li>
+<li>特性覆盖率创建及映射</li>
+<li>VIP的架构</li>
+</ol>
+<ul>
+<li>阶段2(VIP基本搭建)</li>
+</ul>
+<ol>
+<li>driver，sequencer，monitor (少量特性实现)。</li>
+<li>实现基本的端到端的sequence</li>
+</ol>
+<ul>
+<li>阶段3(完成monitor与scoreboard)</li>
+</ul>
+<ol>
+<li>完成monitor -100%实现（checkers，assertions）</li>
+<li>完成scoreboard -100%实现（数据完整性检查)</li>
+<li>在monitor中，完成监测到的transaction与function coverage实现映射。</li>
+<li>为映射更多的基本功能覆盖率，创建其它sequences。</li>
+</ol>
+<ul>
+<li>阶段4(扩充test和sequence阶段)</li>
+</ul>
+<ol>
+<li>实现更多sequences，从而获得80%的功能覆盖率</li>
+</ol>
+<ul>
+<li>阶段5(完成标准)</li>
+</ul>
+<ol>
+<li>Sequence最终可以实现100%的功能覆盖率。</li>
+<li>回归测试结果和最终的总结报告。</li>
+</ol>
+<p>fifo深度计算<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011412586/article/details/10241585">https://blog.csdn.net/u011412586/article/details/10241585</a></p>
+<p>异步复位与同步复位<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41634276/article/details/101078454">https://blog.csdn.net/qq_41634276/article/details/101078454</a></p>
+<p>低功耗<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangkai_2019/article/details/106854081">https://blog.csdn.net/wangkai_2019/article/details/106854081</a></p>
+<p>亚稳态<a target="_blank" rel="noopener" href="https://blog.csdn.net/CLL_caicai/article/details/104625791">https://blog.csdn.net/CLL_caicai/article/details/104625791</a></p>
+<p>奇数分频<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30282654">https://zhuanlan.zhihu.com/p/30282654</a></p>
+<p>（N-1)/2 N-1 </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43755290/article/details/108734704">https://blog.csdn.net/weixin_43755290/article/details/108734704</a></p>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p>摩尔状态机 输出与输入变量无直接关系的时序逻辑电路</p>
+<p>米利状态机 输出与输入变量直接相关的时序逻辑电路</p>
+<h3 id="LFSR"><a href="#LFSR" class="headerlink" title="LFSR"></a>LFSR</h3><h3 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h3><p>上采样 低通抗混叠滤波器，滤掉高频镜像</p>
+<p>二进制转格雷码</p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/20160616125334530.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/20160616125334530.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="20160616125334530"></p>
+<p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/20160616125956205.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/20160616125956205.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="20160616125956205"></p>
+<p>c语言编译存储空间</p>
+<ul>
+<li>（1）栈（stack）：由编译器进行管理，自动分配和释放，存放函数调用过程中的各种参数、局部变量、返回值以及函数返回地址。操作方式类似数据结构中的栈。</li>
+<li>（2）堆（heap）：用于程序动态申请分配和释放空间。C语言中的malloc和free，C++中的new和delete均是在堆中进行的。正常情况下，程序员申请的空间在使用结束后应该释放，若程序员没有释放空间，则程序结束时系统自动回收。注意：这里的“堆”并不是数据结构中的“堆”。</li>
+<li>（3）全局（静态）存储区：分为DATA段和BSS段。DATA段（全局初始化区）存放初始化的全局变量和静态变量；BSS段（全局未初始化区）存放未初始化的全局变量和静态变量。程序运行结束时自动释放。其中BBS段在程序执行之前会被系统自动清0，所以未初始化的全局变量和静态变量在程序执行之前已经为0。</li>
+<li>（4）文字常量区：存放常量字符串。程序结束后由系统释放。</li>
+<li>（5）程序代码区：存放程序的二进制代码 Text</li>
+</ul>
+<h1 id="sv"><a href="#sv" class="headerlink" title="sv"></a>sv</h1><h2 id="一、数据类型"><a href="#一、数据类型" class="headerlink" title="一、数据类型"></a>一、数据类型</h2><h3 id="1-1-内建数据类型"><a href="#1-1-内建数据类型" class="headerlink" title="1.1 内建数据类型"></a>1.1 内建数据类型</h3><ul>
+<li>有符号类型：byte、shortint、int、longint、integer；</li>
+<li>无符号类型：bit、logic、reg、net-type（eg.wire、tri）按照位数定义的类型都是无符号，reg[31:0]</li>
+</ul>
+<h4 id="1-1-1-逻辑-logic-类型"><a href="#1-1-1-逻辑-logic-类型" class="headerlink" title="1.1.1 逻辑(logic)类型"></a><strong>1.1.1 逻辑(logic)类型</strong></h4><p>四值逻辑：0、1、x、z</p>
+<p>integer、logic、reg 、net-type、time</p>
+<p>system verilog 对 reg 数据类型进行优化，使其除了作为一个变量外，还可以被连续赋值、门单元和模块所驱动，这种数据类型称为logic。</p>
+<p>任何使用线网的地方均可使用logic，但是不能有多个结构性的驱动，例如对双向总线建模的时候。logic只能有一个驱动。</p>
+<h4 id="1-1-2-双状态数据类型"><a href="#1-1-2-双状态数据类型" class="headerlink" title="1.1.2 双状态数据类型"></a><strong>1.1.2 双状态数据类型</strong></h4><p>只有 0,1 两个状态</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>有无符号</th>
+<th style="text-align:left">位数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bit</td>
+<td>无</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>有</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td>shortint</td>
+<td>有</td>
+<td style="text-align:left">16</td>
+</tr>
+<tr>
+<td>int</td>
+<td>有</td>
+<td style="text-align:left">32</td>
+</tr>
+<tr>
+<td>longint</td>
+<td>有</td>
+<td style="text-align:left">64</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="1-2-定宽数组"><a href="#1-2-定宽数组" class="headerlink" title="1.2  定宽数组"></a>1.2  定宽数组</h3><h4 id="1-2-1-数组的声明和初始化"><a href="#1-2-1-数组的声明和初始化" class="headerlink" title="1.2.1 数组的声明和初始化"></a>1.2.1 数组的声明和初始化</h4><p>数组以0为搜索下界，声明时可以只给出数组宽度。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lo_hi [<span class="number">0</span>:<span class="number">15</span>]; <span class="comment">// 16</span></span><br><span class="line"><span class="keyword">int</span> c_style[<span class="number">16</span>];  <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
+<p>在变量后面指定维度的方式创建多维定宽数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义8行4列的数组</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">array</span> [<span class="number">0</span>:<span class="number">7</span>][<span class="number">0</span>:<span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">array</span> [<span class="number">8</span>][<span class="number">4</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ascend [<span class="number">4</span>] = `&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// 初始化数组</span></span><br><span class="line"><span class="keyword">int</span> descend [<span class="number">5</span>];</span><br><span class="line">descend = `&#123;<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;     <span class="comment">// 为5个元素赋值</span></span><br><span class="line">descend [<span class="number">0</span>:<span class="number">2</span>] = `&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;   	<span class="comment">// 为前三个元素赋值</span></span><br><span class="line">ascend = `&#123; <span class="number">4</span>&#123;<span class="number">8</span>&#125; &#125;;         	<span class="comment">// 四个值全部为8</span></span><br><span class="line">descend = `&#123;<span class="number">9</span>, <span class="number">8</span>, <span class="keyword">default</span>:<span class="number">-1</span>&#125;; 	<span class="comment">// &#123;9, 8, -1, -1, -1&#125;</span></span><br></pre></td></tr></table></figure>
+<p>如果从一个越界的地址中读取数据，那么将返回数组元素类型的缺省值，对于一个元素为四状态类型的数组，返回x，对于双状态类型的数组，返回0，</p>
+<p>合并类型与非合并类型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bit [<span class="number">3</span>][<span class="number">7</span>:<span class="number">0</span>] b_pack;    <span class="comment">// 合并，占用一个字空间  一个字空间32位</span></span><br><span class="line">bit [<span class="number">7</span>:<span class="number">0</span>] b_unpack [<span class="number">3</span>]; <span class="comment">// 非合并，占用三个字空间</span></span><br></pre></td></tr></table></figure>
+<p>四值逻辑的一位数据需要 2位 存储空间</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logic [<span class="number">3</span>][<span class="number">7</span>:<span class="number">0</span>] l_pack; <span class="comment">// 需要 24*2=48位 存储空间</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-2-2-基本数组操作"><a href="#1-2-2-基本数组操作" class="headerlink" title="1.2.2 基本数组操作"></a>1.2.2 基本数组操作</h4><p>for 和 foreach</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bit [<span class="number">31</span>:<span class="number">0</span>] src[<span class="number">5</span>], dst[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; $size(src); i++)</span><br><span class="line">	src[i] = i;</span><br><span class="line">foreach (dst[j])</span><br><span class="line">	dst[j] = src[j] * <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>复制和比较</p>
+<p>直接利用赋值符号”=” 进行复制，利用”==” “!=”进行比较</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bit [31:0] src [5] = `&#123;0, 1, 2, 3, 4&#125;,</span><br><span class="line">           dst [5] = `&#123;5, 4, 3, 2, 1&#125;;</span><br><span class="line">if (dst = src) // 数组比较</span><br><span class="line">	...</span><br><span class="line">dst = src; // 数组复制</span><br><span class="line">src[0] = 5; // 修改数组中的一个元素</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-动态数组"><a href="#1-3-动态数组" class="headerlink" title="1.3  动态数组"></a>1.3  动态数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dyn[], d2[]; <span class="comment">// 声明动态数组</span></span><br><span class="line"></span><br><span class="line">dyn = <span class="keyword">new</span>[<span class="number">5</span>]; <span class="comment">// 分配5个元素</span></span><br><span class="line">foreach(dyn[j])</span><br><span class="line">	dyn[j] = j; <span class="comment">// 初始化数组</span></span><br><span class="line">d2 = dyn; <span class="comment">// 复制数组</span></span><br><span class="line">d2[<span class="number">0</span>] = <span class="number">5</span>; <span class="comment">// 修改d2[0]</span></span><br><span class="line">dyn = <span class="keyword">new</span>[<span class="number">20</span>]&#123;dyn&#125;; <span class="comment">// 重新分配20个数值并复制</span></span><br><span class="line">dyn = <span class="keyword">new</span>[<span class="number">100</span>];     <span class="comment">// 重新分配100数值，旧值不复存在</span></span><br><span class="line">dyn.<span class="keyword">delete</span>();       <span class="comment">// 删除所有元素</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-4-队列"><a href="#1-4-队列" class="headerlink" title="1.4  队列"></a>1.4  队列</h3><p> 队列声明 [$] ，队列元素的标号从0到$</p>
+<p>队列不使用new[ ]创建空间， 使用队列的方法增减元素，一开始其空间为0</p>
+<p>push_back( ) 和 pop_front( )</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> j - <span class="number">1</span>, q2[$] - &#123;<span class="number">3</span>, <span class="number">4</span>&#125;, q[$] - &#123;<span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>&#125;; <span class="comment">// 队列赋值不使用`</span></span><br><span class="line">q.insert(<span class="number">1</span>, j); <span class="comment">// q -&gt; &#123;0, 1, 2, 5&#125; 在 2(第1个元素) 前插入1</span></span><br><span class="line">q.insert(<span class="number">3</span>, q2);<span class="comment">// q -&gt; &#123;0, 1, 2, 3, 4, 5&#125; 在 q 中插入 q2</span></span><br><span class="line">q.delet(<span class="number">1</span>);    <span class="comment">// q -&gt; &#123;0, 2, 3, 4, 5&#125; 删除第1个元素</span></span><br><span class="line"></span><br><span class="line">q.push_front(<span class="number">6</span>);    <span class="comment">// 在队列头部插入</span></span><br><span class="line">q.pop_back();       <span class="comment">// 从队列尾部取出</span></span><br><span class="line">q.push_back(<span class="number">8</span>);     <span class="comment">// 在队列尾部插入</span></span><br><span class="line">q.pop_front();      <span class="comment">// 从队列头部取出</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-5-关联数组"><a href="#1-5-关联数组" class="headerlink" title="1.5  关联数组"></a>1.5  关联数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bit [<span class="number">63</span>:<span class="number">0</span>] assoc[<span class="keyword">int</span>], idx = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">repeal (<span class="number">64</span>) begin</span><br><span class="line">	assoc[idx] = idx;</span><br><span class="line">	idx = idx &lt;&lt; <span class="number">1</span>;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">assoc.first(idx); <span class="comment">// 找到第一个元素</span></span><br><span class="line">assoc.delet(idx); <span class="comment">// 删除</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-6-结构体"><a href="#1-6-结构体" class="headerlink" title="1.6 结构体"></a>1.6 结构体</h3><p>struct 创建结构</p>
+<p>和 typedef 创建新的类型，并用新类型声明更多变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span>bit [<span class="number">7</span>:<span class="number">0</span>] r, g, b;&#125; pixel; <span class="comment">// 创建一个pixel的结构体 pixel是变量名</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span>bit [<span class="number">7</span>:<span class="number">0</span>] r, g, b;&#125; pixel_s; <span class="comment">// 通过typedef创建新的类型， pixel_s是结构体名</span></span><br><span class="line">pixel_s my_pixel; <span class="comment">// 声明变量</span></span><br><span class="line">my_pixel = `&#123;`h10, `h10, `h10&#125;; <span class="comment">// 结构体类型赋值</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-7-枚举类型"><a href="#1-7-枚举类型" class="headerlink" title="1.7 枚举类型"></a>1.7 枚举类型</h3><p>enum</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span>INIT, DECODE, IDLE&#125; fsmstate_e;</span><br><span class="line">fsmstate_e pstate, nstate;</span><br></pre></td></tr></table></figure>
+<p>枚举类型可以直接给int赋值，int不能赋值给枚举类型(需要转换)</p>
+<h3 id="1-8-字符串"><a href="#1-8-字符串" class="headerlink" title="1.8 字符串"></a>1.8 字符串</h3><p>string</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> s;</span><br><span class="line">s = <span class="string">&quot;IEEE &quot;</span>;</span><br><span class="line"><span class="built_in">$display</span>(s<span class="variable">.getc</span>(<span class="number">0</span>)); 	<span class="comment">// 显示&#x27;I&#x27;</span></span><br><span class="line"><span class="built_in">$display</span>(s<span class="variable">.tolower</span>(<span class="number">0</span>)); <span class="comment">// 转为小写</span></span><br><span class="line">s<span class="variable">.putc</span>(s<span class="variable">.len</span>(<span class="number">0</span>), <span class="string">&quot;-&quot;</span>); 	<span class="comment">// 替换</span></span><br><span class="line">s = &#123;s,<span class="string">&quot;P1800&quot;</span>&#125;;       	<span class="comment">// 拼接</span></span><br><span class="line"><span class="built_in">$display</span>(s<span class="variable">.substr</span>(<span class="number">2</span>,<span class="number">5</span>)); <span class="comment">// 取子字符串 </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">$sformat</span>(<span class="string">&quot;%s %5d&quot;</span>, s, <span class="number">42</span>); <span class="comment">// 格式化并返回一个字符串</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-9接口类型"><a href="#1-9接口类型" class="headerlink" title="1.9接口类型"></a>1.9接口类型</h3><p>interface</p>
+<p>可以在接口 声明modport 来约束不同模块连接时的信号方向，在模块例化时，可以选择连接到端口中具体的某一个modport，降低方向连接错误的可能，避免信号多驱动的情况。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> main_bus;</span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">15</span>:<span class="number">0</span>] data; <span class="keyword">wire</span> [<span class="number">15</span>:<span class="number">0</span>] address;</span><br><span class="line">	<span class="keyword">logic</span> [<span class="number">7</span>:<span class="number">0</span>] slave_instruction;</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">endinterface</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口实例</span></span><br><span class="line">main_bus bus();</span><br><span class="line"></span><br><span class="line"><span class="variable">.bus</span>(bus), <span class="comment">//接口连接</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="二、随机化"><a href="#二、随机化" class="headerlink" title="二、随机化"></a>二、随机化</h2><h2 id="三、覆盖率"><a href="#三、覆盖率" class="headerlink" title="三、覆盖率"></a>三、覆盖率</h2><p>代码覆盖率</p>
+<p>断言覆盖率</p>
+<p>功能覆盖率</p>
+<h1 id="真题"><a href="#真题" class="headerlink" title="真题"></a>真题</h1><p><img src="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220329103244537.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/ian-lab/typorapic/master/image-20220329103244537.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220329103244537"></p>
+<h2 id="multicycle-path"><a href="#multicycle-path" class="headerlink" title="multicycle path"></a>multicycle path</h2><p><a target="_blank" rel="noopener" href="https://aijishu.com/a/1060000000206169">https://aijishu.com/a/1060000000206169</a></p>
+<h2 id="设置输入延迟（input-delay）"><a href="#设置输入延迟（input-delay）" class="headerlink" title="设置输入延迟（input delay）"></a>设置输入延迟（input delay）</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Reborn_Lee/article/details/85052053">https://blog.csdn.net/Reborn_Lee/article/details/85052053</a></p>
+<h2 id="除法器"><a href="#除法器" class="headerlink" title="除法器"></a>除法器</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39507748/article/details/108909681">https://blog.csdn.net/qq_39507748/article/details/108909681</a></p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%97IC/" class="">
+              数字IC
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>ian</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2023/04/26/数字ic基础知识/" target="_blank" title="数字ic基础知识">https://ian-lab.github.io/2023/04/26/数字ic基础知识/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/9.jpg" class="lazyload placeholder" data-srcset="/medias/9.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2023/04/20/vcs%E5%92%8Cverdi%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">vcs和verdi基本操作</div>
+      </div>
+      <!-- <div class="content">
+        vcs编译选项
+1234567891011-full64 在64-bit模式下编译，生成64-bit模式仿真的可执行文件
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+          open = true;
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+    
+  </script>
+
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js" data-pjax></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+   
+    <script src="/js/cursor/clicklove.js"></script> 
+  
+
+
+
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
